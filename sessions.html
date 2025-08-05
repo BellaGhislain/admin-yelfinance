@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Gestion des Formations | Admin Dashboard</title>
+  <title>Gestion des Sessions | Admin Dashboard</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico">
@@ -133,22 +133,23 @@
 
             <!-- Formations -->
             <div class="nav-item">
-              <a class="nav-link active" href="formations.html">
+              <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                                  <span class="nav-link-title">Gérer formations</span>
+                <span class="nav-link-title">Gérer formations</span>
               </a>
             </div>
 
+            <!-- Ajouter une formation -->
             <div class="nav-item">
               <a class="nav-link" href="formations-add.html">
                 <i class="bi-plus-circle nav-icon"></i>
-                                  <span class="nav-link-title">Ajouter une formation</span>
+                <span class="nav-link-title">Ajouter une formation</span>
               </a>
             </div>
 
             <!-- Sessions -->
             <div class="nav-item">
-              <a class="nav-link" href="sessions.html">
+              <a class="nav-link active" href="sessions.html">
                 <i class="bi-calendar-event nav-icon"></i>
                 <span class="nav-link-title">Gérer sessions</span>
               </a>
@@ -213,7 +214,7 @@
     <div class="content container-fluid">
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-header-title">Gestion des formations</h1>
+        <h1 class="page-header-title">Gestion des sessions</h1>
 
         
       </div>
@@ -230,7 +231,7 @@
                 <div class="input-group-prepend input-group-text">
                   <i class="bi-search"></i>
                 </div>
-                <input id="datatableSearch" type="search" class="form-control" placeholder="Rechercher des formations" aria-label="Rechercher des formations">
+                <input id="datatableSearch" type="search" class="form-control" placeholder="Rechercher des sessions" aria-label="Rechercher des sessions">
               </div>
               <!-- End Search -->
             </form>
@@ -246,7 +247,7 @@
                         "placeholder": "Filtres",
                         "dropdownWrapperClass": "tom-select-custom tom-select-custom-end"
                       }'>
-                <option value="null" selected>Toutes les formations</option>
+                <option value="null" selected>Toutes les sessions</option>
                 <option value="web">Web Development</option>
                 <option value="data">Data Science</option>
                 <option value="mobile">Mobile Development</option>
@@ -284,7 +285,7 @@
                     <label class="form-check-label" for="datatableCheckAll"></label>
                   </div>
                 </th>
-                <th>Formation</th>
+                <th>Session</th>
                 <th>Formateur</th>
                 <th>Description</th>
                 <th>Prix</th>

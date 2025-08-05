@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Ajouter une Formation | Centre de Formation</title>
+  <title>Ajouter une Session | Centre de Formation</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico">
@@ -195,7 +195,7 @@
                 <i class="bi-search"></i>
               </div>
 
-                              <input type="search" class="js-form-search form-control" placeholder="Rechercher des formations" aria-label="Rechercher des formations" data-hs-form-search-options='{
+                              <input type="search" class="js-form-search form-control" placeholder="Rechercher des sessions" aria-label="Rechercher des sessions" data-hs-form-search-options='{
                        "clearIcon": "#clearSearchResultsIcon",
                        "dropMenuElement": "#searchDropdownMenu",
                        "dropMenuOffset": 20,
@@ -480,15 +480,15 @@
             <div class="nav-item">
               <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                                  <span class="nav-link-title">Gérer formations</span>
+                <span class="nav-link-title">Gérer formations</span>
               </a>
             </div>
 
             <!-- Ajouter une formation -->
             <div class="nav-item">
-              <a class="nav-link active" href="formations-add.html">
+              <a class="nav-link" href="formations-add.html">
                 <i class="bi-plus-circle nav-icon"></i>
-                                  <span class="nav-link-title">Ajouter une formation</span>
+                <span class="nav-link-title">Ajouter une formation</span>
               </a>
             </div>
 
@@ -502,7 +502,7 @@
 
             <!-- Ajouter une session -->
             <div class="nav-item">
-              <a class="nav-link" href="sessions-add.html">
+              <a class="nav-link active" href="sessions-add.html">
                 <i class="bi-plus-circle nav-icon"></i>
                 <span class="nav-link-title">Ajouter une session</span>
               </a>
@@ -565,7 +565,7 @@
         <div class="row align-items-center">
           <div class="col-sm mb-2 mb-sm-0">
 
-                            <h1 class="page-header-title">Ajouter une formation</h1>
+            <h1 class="page-header-title">Ajouter une session</h1>
 
             <div class="mt-2">
               
@@ -586,7 +586,7 @@
           <div class="card mb-3 mb-lg-5">
             <!-- Header -->
             <div class="card-header">
-              <h4 class="card-header-title">Informations de la formation</h4>
+              <h4 class="card-header-title">Informations de la session</h4>
             </div>
             <!-- End Header -->
 
@@ -594,44 +594,33 @@
             <div class="card-body">
               <!-- Form -->
               <div class="mb-4">
-                <label for="formationNameLabel" class="form-label">Nom (titre) de la formation <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Le titre principal de votre formation."></i></label>
+                <label for="formationSelectLabel" class="form-label">Sélectionner la formation <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Choisissez la formation pour laquelle vous créez une session."></i></label>
 
-                <input type="text" class="form-control" name="formationName" id="formationNameLabel" placeholder="Ex: Formation en Développement Web" required>
-              </div>
-              <!-- End Form -->
-
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="durationLabel" class="form-label">Durée (nombre de jours)</label>
-
-                <input type="number" class="form-control" name="duration" id="durationLabel" placeholder="Ex: 30" min="1" required>
-              </div>
-              <!-- End Form -->
-
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="levelsLabel" class="form-label">Niveaux</label>
-
-                <select class="form-select" name="levels" id="levelsLabel" required>
-                  <option value="">Sélectionner le niveau</option>
-                  <option value="debutant">Débutant</option>
-                  <option value="intermediaire">Intermédiaire</option>
-                  <option value="avance">Avancé</option>
-                  <option value="expert">Expert</option>
+                <select class="form-select" name="formationSelect" id="formationSelectLabel" required>
+                  <option value="">Sélectionner une formation</option>
+                  <option value="web-dev">Formation en Développement Web</option>
+                  <option value="data-science">Formation en Data Science</option>
+                  <option value="mobile-dev">Formation en Développement Mobile</option>
+                  <option value="design">Formation en Design</option>
+                  <option value="marketing">Formation en Marketing Digital</option>
                 </select>
               </div>
               <!-- End Form -->
 
               <div class="row">
+                <div class="col-sm-6">
                   <div class="mb-4">
-                    <label for="weightLabel" class="form-label">Formateur</label>
-
-                    <select class="form-select" name="weightName" id="weightLabel">
-                      <option value="">Sélectionner un formateur</option>
-                      <option value="marie-dubois">Marie Dubois</option>
-                      <option value="alexandre-martin">Alexandre Martin</option>
-                      <option value="sophie-bernard">Sophie Bernard</option>
-                    </select>
+                    <label for="startDateLabel" class="form-label">Date de début</label>
+                    <input type="date" class="form-control" name="startDate" id="startDateLabel" required>
+                  </div>
+                  <!-- End Form -->
+                </div>
+                <!-- End Col -->
+                
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label for="endDateLabel" class="form-label">Date de fin</label>
+                    <input type="date" class="form-control" name="endDate" id="endDateLabel" required>
                   </div>
                   <!-- End Form -->
                 </div>
@@ -639,94 +628,42 @@
               </div>
               <!-- End Row -->
 
-              <!-- Form -->
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label for="countryLabel" class="form-label">Pays</label>
+                    <input type="text" class="form-control" name="country" id="countryLabel" placeholder="Ex: France" required>
+                  </div>
+                  <!-- End Form -->
+                </div>
+                <!-- End Col -->
+                
+                <div class="col-sm-6">
+                  <div class="mb-4">
+                    <label for="cityLabel" class="form-label">Ville</label>
+                    <input type="text" class="form-control" name="city" id="cityLabel" placeholder="Ex: Paris" required>
+                  </div>
+                  <!-- End Form -->
+                </div>
+                <!-- End Col -->
+              </div>
+              <!-- End Row -->
+
+                            <!-- Form -->
               <div class="mb-4">
-                <label for="presentationLabel" class="form-label">Présentation de la formation</label>
-                <textarea class="form-control" name="presentation" id="presentationLabel" rows="6" placeholder="Décrivez en détail le contenu de la formation, les objectifs, les prérequis, etc..."></textarea>
+                <label for="trainingTypeLabel" class="form-label">Type de formation</label>
+                <select class="form-select" name="trainingType" id="trainingTypeLabel" required>
+                  <option value="">Sélectionner le type de formation</option>
+                  <option value="presentiel">Présentiel</option>
+                  <option value="distance">Distance</option>
+                  <option value="hybride">Hybride</option>
+                </select>
               </div>
               <!-- End Form -->
 
-              <label class="form-label">Compétences que les apprenants vont acquérir</label>
 
-              <!-- Skills Items Container -->
-              <div id="skillsItemsContainer">
-                <!-- Skill Item 1 -->
-                <div class="mb-3 skill-item">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Maîtriser les langages HTML, CSS et JavaScript" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item" style="display: none;">
-                      <i class="bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
 
-                <!-- Skill Item 2 -->
-                <div class="mb-3 skill-item">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Développer des applications web responsives" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item">
-                      <i class="bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
 
-                <!-- Skill Item 3 -->
-                <div class="mb-3 skill-item">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Utiliser les frameworks modernes (React, Vue.js)" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item">
-                      <i class="bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Add More Button -->
-              <button type="button" class="btn btn-outline-primary btn-sm" id="addSkillItem">
-                <i class="bi-plus-circle me-1"></i> Ajouter une compétence
-              </button>
-
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const container = document.getElementById('skillsItemsContainer');
-                  const addButton = document.getElementById('addSkillItem');
-
-                  addButton.addEventListener('click', function() {
-                    const newItem = document.createElement('div');
-                    newItem.className = 'mb-3 skill-item';
-                    newItem.innerHTML = `
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Gérer les bases de données" required>
-                        <button type="button" class="btn btn-outline-danger remove-skill-item">
-                          <i class="bi-trash"></i>
-                        </button>
-                      </div>
-                    `;
-                    container.appendChild(newItem);
-                    updateRemoveButtons();
-                  });
-
-                  container.addEventListener('click', function(e) {
-                    if (e.target.closest('.remove-skill-item')) {
-                      e.target.closest('.skill-item').remove();
-                      updateRemoveButtons();
-                    }
-                  });
-
-                  function updateRemoveButtons() {
-                    const items = container.querySelectorAll('.skill-item');
-                    const removeButtons = container.querySelectorAll('.remove-skill-item');
-                    
-                    if (items.length === 1) {
-                      removeButtons[0].style.display = 'none';
-                    } else {
-                      removeButtons.forEach(btn => btn.style.display = 'block');
-                    }
-                  }
-
-                  updateRemoveButtons();
-                });
-              </script>
             </div>
             <!-- Body -->
           </div>
@@ -741,15 +678,15 @@
               <!-- Dropdown -->
               <div class="dropdown">
                 <a class="btn btn-ghost-secondary btn-sm" href="#!" id="mediaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ajouter des médias <i class="bi-chevron-down"></i>
+                  Ajouter des documents <i class="bi-chevron-down"></i>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end mt-1">
                   <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#addImageFromURLModal">
-                    <i class="bi-link dropdown-item-icon"></i> Ajouter une image depuis une URL
+                    <i class="bi-link dropdown-item-icon"></i> Ajouter un document depuis une URL
                   </a>
                   <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#embedVideoModal">
-                    <i class="bi-youtube dropdown-item-icon"></i> Intégrer une vidéo
+                    <i class="bi-file-earmark-text dropdown-item-icon"></i> Ajouter un fichier PDF
                   </a>
                 </div>
               </div>
@@ -759,29 +696,13 @@
 
             <!-- Body -->
             <div class="card-body">
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="youtubeLinkLabel" class="form-label">Lien de la vidéo YouTube</label>
-                <input type="url" class="form-control" name="youtubeLink" id="youtubeLinkLabel" placeholder="https://www.youtube.com/watch?v=..." aria-label="Lien YouTube de description">
-                <span class="form-text">Mettez le lien de la vidéo expliquant la formation.</span>
-              </div>
-              <!-- End Form -->
-
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="photoLabel" class="form-label">Photo de la formation</label>
-                <input type="file" class="form-control" name="photo" id="photoLabel" accept="image/*" aria-label="Photo de la formation">
-                <span class="form-text">Téléchargez une image représentative de la formation (JPG, PNG, GIF).</span>
-              </div>
-              <!-- End Form -->
-
               <!-- Dropzone -->
               <div id="attachFilesNewProjectLabel" class="js-dropzone dz-dropzone dz-dropzone-card">
                 <div class="dz-message">
                   <img class="avatar avatar-xl avatar-4x3 mb-3" src="assets/svg/illustrations/oc-browse.svg" alt="Description de l'image" data-hs-theme-appearance="default">
                   <img class="avatar avatar-xl avatar-4x3 mb-3" src="assets/svg/illustrations-light/oc-browse.svg" alt="Description de l'image" data-hs-theme-appearance="dark">
 
-                  <h5>Glissez et déposez votre fichier ici</h5>
+                  <h5>Glissez et déposez vos documents ici</h5>
 
                   <p class="mb-2">ou</p>
 
@@ -811,10 +732,10 @@
             <div class="card-body">
               <!-- Form -->
               <div class="mb-4">
-                <label for="priceLabel" class="form-label">Prix de la formation</label>
+                <label for="priceNameLabel" class="form-label">Prix (F CFA)</label>
 
                 <div class="input-group">
-                  <input type="number" class="form-control" name="price" id="priceLabel" placeholder="0" min="0" step="0.01" aria-label="Prix de la formation">
+                  <input type="text" class="form-control" name="priceName" id="priceNameLabel" placeholder="0.00" aria-label="0.00">
 
                   <div class="input-group-append">
                     <!-- Select -->
@@ -827,8 +748,7 @@
                               }'>
                         <option value="FCFA" selected>F CFA</option>
                         <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                      </select>
+                                              </select>
                     </div>
                     <!-- End Select -->
                   </div>
@@ -869,7 +789,7 @@
               <div class="col-auto">
                 <div class="d-flex gap-3">
                   <button type="button" class="btn btn-ghost-light">Annuler</button>
-                  <button type="button" class="btn btn-primary">Créer la formation</button>
+                  <button type="button" class="btn btn-primary">Créer la session</button>
                 </div>
               </div>
               <!-- End Col -->

@@ -459,13 +459,29 @@
             <div class="nav-item">
               <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Informations sessions</span>
+                <span class="nav-link-title">Gérer formations</span>
               </a>
             </div>
 
             <!-- Ajouter une formation -->
             <div class="nav-item">
               <a class="nav-link" href="formations-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une formation</span>
+              </a>
+            </div>
+
+            <!-- Sessions -->
+            <div class="nav-item">
+              <a class="nav-link" href="sessions.html">
+                <i class="bi-calendar-event nav-icon"></i>
+                <span class="nav-link-title">Gérer sessions</span>
+              </a>
+            </div>
+
+            <!-- Ajouter une session -->
+            <div class="nav-item">
+              <a class="nav-link" href="sessions-add.html">
                 <i class="bi-plus-circle nav-icon"></i>
                 <span class="nav-link-title">Ajouter une session</span>
               </a>
@@ -2856,33 +2872,7 @@
         }, 1);
       });
 
-      $('#toggleColumn_name').change(function (e) {
-        datatable.columns(1).visible(e.target.checked)
-      })
 
-      $('#toggleColumn_email').change(function (e) {
-        datatable.columns(2).visible(e.target.checked)
-      })
-
-      datatable.columns(3).visible(false)
-
-      $('#toggleColumn_phone').change(function (e) {
-        datatable.columns(3).visible(e.target.checked)
-      })
-
-      $('#toggleColumn_country').change(function (e) {
-        datatable.columns(4).visible(e.target.checked)
-      })
-
-      datatable.columns(5).visible(false)
-
-      $('#toggleColumn_account_status').change(function (e) {
-        datatable.columns(5).visible(e.target.checked)
-      })
-
-      $('#toggleColumn_orders').change(function (e) {
-        datatable.columns(6).visible(e.target.checked)
-      })
 
       // Filtres individuels par colonne
       $('#filterNomComplet').on('change', function() {
