@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Gestion des Formations | Admin Dashboard</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="assets/css/vendor.min.css">
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
+
+  <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+
+  <style data-hs-appearance-onload-styles>
+    * { transition: unset !important; }
+    body { opacity: 0; }
+  </style>
+
+  <script>
+    window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.html","assets/css/docs.css","assets/vendor/icon-set/style.html","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.html","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
+  </script>
+</head>
+
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
+
+  <script src="assets/js/hs.theme-appearance.js"></script>
+  <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
+    <div class="navbar-nav-wrap">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+        <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+      </a>
+      <!-- End Logo -->
+
+      <div class="navbar-nav-wrap-content-start">
+        <!-- Navbar Vertical Toggle -->
+        <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
+          <i class="bi-arrow-bar-left navbar-toggler-short-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
+          <i class="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
+        </button>
+        <!-- End Navbar Vertical Toggle -->
+      </div>
+
+      <div class="navbar-nav-wrap-content-end">
+        <!-- Navbar -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <!-- Account -->
+            <div class="dropdown">
+              <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
+                                 <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                  <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                </div>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
+                <div class="dropdown-item-text">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar avatar-sm avatar-circle">
+                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h5 class="mb-0">Admin</h5>
+                      <p class="card-text text-body">admin@formation.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="#">Mon profil</a>
+                <a class="dropdown-item" href="#">Paramètres</a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="#">Déconnexion</a>
+              </div>
+            </div>
+            <!-- End Account -->
+          </li>
+        </ul>
+        <!-- End Navbar -->
+      </div>
+    </div>
+  </header>
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <!-- Navbar Vertical -->
+  <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white">
+    <div class="navbar-vertical-container">
+      <div class="navbar-vertical-footer-offset">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+          <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+        </a>
+        <!-- End Logo -->
+
+        <!-- Navbar Vertical Toggle -->
+        <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
+          <i class="bi-arrow-bar-left navbar-toggler-short-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
+          <i class="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
+        </button>
+        <!-- End Navbar Vertical Toggle -->
+
+        <!-- Content -->
+        <div class="navbar-vertical-content">
+          <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
+            <!-- Dashboard -->
+            <div class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi-house-door nav-icon"></i>
+                <span class="nav-link-title">Dashboard</span>
+              </a>
+            </div>
+
+            <!-- Formations -->
+            <div class="nav-item">
+              <a class="nav-link active" href="formations.html">
+                <i class="bi-book nav-icon"></i>
+                <span class="nav-link-title">Informations sessions</span>
+              </a>
+            </div>
+
+            <div class="nav-item">
+              <a class="nav-link" href="formations-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une session</span>
+              </a>
+            </div>
+
+            <!-- Inscriptions -->
+            <div class="nav-item">
+              <a class="nav-link" href="inscriptions.html">
+                <i class="bi-people nav-icon"></i>
+                <span class="nav-link-title">Etat payement</span>
+              </a>
+            </div>
+
+            <!-- Étudiants -->
+            <div class="nav-item">
+              <a class="nav-link" href="etudiants.html">
+                <i class="bi-person nav-icon"></i>
+                <span class="nav-link-title">Participants</span>
+              </a>
+            </div>
+
+            <!-- Instructeurs -->
+            <div class="nav-item">
+              <a class="nav-link" href="instructeurs-liste.html">
+                <i class="bi-person-badge nav-icon"></i>
+                <span class="nav-link-title">Formateurs</span>
+              </a>
+            </div>
+
+            <!-- Rapports -->
+            <div class="nav-item">
+              <a class="nav-link" href="rapports.html">
+                <i class="bi-graph-up nav-icon"></i>
+                <span class="nav-link-title">Rapports</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- End Content -->
+      </div>
+    </div>
+  </aside>
+
+  <main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="content container-fluid">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-header-title">Gestion des formations</h1>
+
+        
+      </div>
+      <!-- End Page Header -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header card-header-content-md-between">
+          <div class="mb-2 mb-md-0">
+            <form>
+              <!-- Search -->
+              <div class="input-group input-group-merge input-group-flush">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-search"></i>
+                </div>
+                <input id="datatableSearch" type="search" class="form-control" placeholder="Rechercher des formations" aria-label="Rechercher des formations">
+              </div>
+              <!-- End Search -->
+            </form>
+          </div>
+
+          <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
+            <!-- Select -->
+            <div class="tom-select-custom tom-select-custom-end">
+              <select class="js-select js-datatable-filter form-select form-select-sm" data-target-column-index="5" data-hs-tom-select-options='{
+                        "searchInDropdown": false,
+                        "hideSearch": true,
+                        "dropdownWidth": "11rem",
+                        "placeholder": "Filtres",
+                        "dropdownWrapperClass": "tom-select-custom tom-select-custom-end"
+                      }'>
+                <option value="null" selected>Toutes les formations</option>
+                <option value="web">Web Development</option>
+                <option value="data">Data Science</option>
+                <option value="mobile">Mobile Development</option>
+                <option value="design">Design</option>
+              </select>
+            </div>
+            <!-- End Select -->
+          </div>
+        </div>
+        <!-- End Header -->
+
+        <!-- Table -->
+        <div class="table-responsive datatable-custom">
+          <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap card-table" data-hs-datatables-options='{
+                   "columnDefs": [{
+                      "targets": [0, 3, 6],
+                      "orderable": false
+                    }],
+                   "order": [],
+                   "info": {
+                     "totalQty": "#datatableWithPaginationInfoTotalQty"
+                   },
+                   "search": "#datatableSearch",
+                   "entries": "#datatableEntries",
+                   "pageLength": 5,
+                   "isResponsive": false,
+                   "isShowPaging": false,
+                   "pagination": "datatablePagination"
+                 }'>
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+                    <label class="form-check-label" for="datatableCheckAll"></label>
+                  </div>
+                </th>
+                <th>Formation</th>
+                <th>Formateur</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck2">
+                    <label class="form-check-label" for="usersDataCheck2"></label>
+                  </div>
+                </td>
+                <th>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar">
+                      <img class="avatar-img" src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Développement Web Full-Stack avec React & Node.js</span>
+                      <span class="d-block fs-6 text-body">12 semaines • Intermédiaire</span>
+                    </div>
+                  </a>
+                </th>
+                <td>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar avatar-circle">
+                      <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Instructeur">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-inherit">Marie Dubois</span>
+                      <span class="d-block fs-6 text-body">marie.dubois@formation.com</span>
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <div class="text-wrap" style="width: 18rem;">
+                    <p>Apprenez à créer des applications web complètes avec React, Node.js, Express et MongoDB. Formation pratique avec projets réels.</p>
+                    <div class="d-flex align-items-center mt-2">
+                      <span class="badge bg-soft-success text-success me-2">4.8 ★</span>
+                      <span class="text-muted">2,450 étudiants</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="h5 text-success mb-0">899 F CFA</span>
+                    <span class="text-muted text-decoration-line-through">1299 F CFA</span>
+                  </div>
+                </td>
+                <td><span class="badge bg-soft-primary text-primary">Web Development</span></td>
+                <td>
+                  <!-- Unfold -->
+                  <div class="hs-unfold">
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="settingsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi-three-dots-vertical"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown1">
+                      <span class="dropdown-header">Actions</span>
+
+                      <a class="dropdown-item" href="formation-edit.html">
+                        <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-archive dropdown-item-icon"></i> Archiver
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
+                      </a>
+                    </div>
+                  </div>
+                  <!-- End Unfold -->
+                </td>
+              </tr>
+
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck3">
+                    <label class="form-check-label" for="usersDataCheck3"></label>
+                  </div>
+                </td>
+                <th>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar">
+                      <img class="avatar-img" src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Data Science & Machine Learning</span>
+                      <span class="d-block fs-6 text-body">16 semaines • Avancé</span>
+                    </div>
+                  </a>
+                </th>
+                <td>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar avatar-soft-dark avatar-circle">
+                      <span class="avatar-initials">A</span>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Alexandre Martin</span>
+                      <span class="d-block fs-6 text-body">alexandre.martin@formation.com</span>
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <div class="text-wrap" style="width: 18rem;">
+                    <p>Maîtrisez les concepts fondamentaux de la data science, du machine learning et de l'intelligence artificielle.</p>
+                    <div class="d-flex align-items-center mt-2">
+                      <span class="badge bg-soft-success text-success me-2">4.9 ★</span>
+                      <span class="text-muted">1,850 étudiants</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="h5 text-success mb-0">1299 F CFA</span>
+                    <span class="text-muted text-decoration-line-through">1799 F CFA</span>
+                  </div>
+                </td>
+                <td><span class="badge bg-soft-info text-info">Data Science</span></td>
+                <td>
+                  <!-- Unfold -->
+                  <div class="hs-unfold">
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="settingsDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi-three-dots-vertical"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown2">
+                      <span class="dropdown-header">Actions</span>
+
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-archive dropdown-item-icon"></i> Archiver
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
+                      </a>
+                    </div>
+                  </div>
+                  <!-- End Unfold -->
+                </td>
+              </tr>
+
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck4">
+                    <label class="form-check-label" for="usersDataCheck4"></label>
+                  </div>
+                </td>
+                <th>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar">
+                      <img class="avatar-img" src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Développement Mobile iOS & Android</span>
+                      <span class="d-block fs-6 text-body">14 semaines • Intermédiaire</span>
+                    </div>
+                  </a>
+                </th>
+                <td>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar avatar-circle">
+                      <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Instructeur">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Sophie Bernard</span>
+                      <span class="d-block fs-6 text-body">sophie.bernard@formation.com</span>
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <div class="text-wrap" style="width: 18rem;">
+                    <p>Créez des applications mobiles natives pour iOS et Android avec Swift, Kotlin et React Native.</p>
+                    <div class="d-flex align-items-center mt-2">
+                      <span class="badge bg-soft-success text-success me-2">4.7 ★</span>
+                      <span class="text-muted">1,200 étudiants</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="h5 text-success mb-0">1099 F CFA</span>
+                    <span class="text-muted text-decoration-line-through">1499 F CFA</span>
+                  </div>
+                </td>
+                <td><span class="badge bg-soft-warning text-warning">Mobile Development</span></td>
+                <td>
+                  <!-- Unfold -->
+                  <div class="hs-unfold">
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="settingsDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi-three-dots-vertical"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown3">
+                      <span class="dropdown-header">Actions</span>
+
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-archive dropdown-item-icon"></i> Archiver
+                      </a>
+                      <a class="dropdown-item" href="javascript:;">
+                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
+                      </a>
+                    </div>
+                  </div>
+                  <!-- End Unfold -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+
+        <!-- Footer -->
+        <div class="card-footer">
+          <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+            <div class="col-sm mb-2 mb-sm-0">
+              <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                <span class="me-2">Showing:</span>
+
+                <!-- Select -->
+                <div class="tom-select-custom">
+                  <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
+                            "searchInDropdown": false,
+                            "hideSearch": true
+                          }'>
+                    <option value="5">5</option>
+                    <option value="7" selected>7</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+                <!-- End Select -->
+
+                <span class="text-secondary me-2">of</span>
+
+                <!-- Pagination Quantity -->
+                <span id="datatableWithPaginationInfoTotalQty">24</span>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-sm-auto">
+              <div class="d-flex justify-content-center justify-content-sm-end">
+                <!-- Pagination -->
+                <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+              </div>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- End Footer -->
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="row justify-content-between align-items-center">
+        <div class="col">
+          <p class="fs-6 mb-0">&copy; 2024 Centre de Formation. Tous droits réservés.</p>
+        </div>
+        <!-- End Col -->
+
+        <div class="col-auto">
+          <div class="d-flex justify-content-end">
+            <!-- List Separator -->
+            <ul class="list-inline list-separator">
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">FAQ</a>
+              </li>
+
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">License</a>
+              </li>
+            </ul>
+            <!-- End List Separator -->
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Footer -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- JS Implementing Plugins -->
+  <script src="assets/js/vendor.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      window.onload = function () {
+        // INITIALIZATION OF DATATABLES
+        // =======================================================
+        const datatable = HSCore.components.HSDatatables.init('#datatable', {
+          dom: 'Bfrtip',
+          buttons: [
+            {
+              extend: 'copy',
+              className: 'd-none'
+            },
+            {
+              extend: 'excel',
+              className: 'd-none'
+            },
+            {
+              extend: 'csv',
+              className: 'd-none'
+            },
+            {
+              extend: 'pdf',
+              className: 'd-none'
+            },
+            {
+              extend: 'print',
+              className: 'd-none'
+            }
+          ]
+        });
+
+        // INITIALIZATION OF FORM SEARCH
+        // =======================================================
+        HSCore.components.HSFormSearch.init('.js-form-search');
+      }
+    })()
+  </script>
+</body>
+</html> 
