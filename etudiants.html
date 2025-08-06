@@ -459,15 +459,7 @@
             <div class="nav-item">
               <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Gérer formations</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une formation -->
-            <div class="nav-item">
-              <a class="nav-link" href="formations-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une formation</span>
+                <span class="nav-link-title">Gestion des formations</span>
               </a>
             </div>
 
@@ -475,23 +467,15 @@
             <div class="nav-item">
               <a class="nav-link" href="sessions.html">
                 <i class="bi-calendar-event nav-icon"></i>
-                <span class="nav-link-title">Gérer sessions</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une session -->
-            <div class="nav-item">
-              <a class="nav-link" href="sessions-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une session</span>
+                <span class="nav-link-title">Gestion des sessions</span>
               </a>
             </div>
 
             <!-- Inscriptions -->
             <div class="nav-item">
               <a class="nav-link" href="inscriptions.html">
-                <i class="bi-person-check nav-icon"></i>
-                <span class="nav-link-title">Etat de paiements</span>
+                <i class="bi-credit-card nav-icon"></i>
+                <span class="nav-link-title">État des paiements</span>
               </a>
             </div>
 
@@ -499,7 +483,7 @@
             <div class="nav-item">
               <a class="nav-link active" href="etudiants.html">
                 <i class="bi-people nav-icon"></i>
-                <span class="nav-link-title">Participants</span>
+                <span class="nav-link-title">Gestion des participants</span>
               </a>
             </div>
 
@@ -507,25 +491,7 @@
             <div class="nav-item">
               <a class="nav-link" href="instructeurs-liste.html">
                 <i class="bi-person-workspace nav-icon"></i>
-                <span class="nav-link-title">Formateurs</span>
-              </a>
-            </div>
-
-            <!-- Ajouter un instructeur -->
-            <div class="nav-item">
-              <a class="nav-link" href="instructeurs.html">
-                <i class="bi-person-plus nav-icon"></i>
-                <span class="nav-link-title">Ajouter un formateur</span>
-              </a>
-            </div>
-
-
-
-            <!-- Rapports -->
-            <div class="nav-item">
-              <a class="nav-link" href="rapports.html">
-                <i class="bi-graph-up nav-icon"></i>
-                <span class="nav-link-title">Rapports</span>
+                <span class="nav-link-title">Gestion des formateurs</span>
               </a>
             </div>
 
@@ -594,7 +560,7 @@
             <!-- Filtres par colonne -->
             <div class="dropdown">
               <button type="button" class="btn btn-white w-100" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                <i class="bi-funnel me-1"></i> Filtres <span class="badge bg-soft-primary text-primary rounded-circle ms-1">5</span>
+                <i class="bi-funnel me-1"></i> Filtres <span class="badge bg-soft-primary text-primary rounded-circle ms-1">6</span>
               </button>
 
               <div class="dropdown-menu dropdown-menu-end dropdown-card" aria-labelledby="filterDropdown" style="width: 20rem;">
@@ -665,6 +631,19 @@
                         </select>
                       </div>
 
+                      <!-- Filtre Session -->
+                      <div class="form-group">
+                        <label class="form-label">Session</label>
+                        <select class="form-select form-select-sm" id="filterSession">
+                          <option value="">Toutes les sessions</option>
+                          <option value="Session Janvier 2024">Session Janvier 2024</option>
+                          <option value="Session Mars 2024">Session Mars 2024</option>
+                          <option value="Session Mai 2024">Session Mai 2024</option>
+                          <option value="Session Juillet 2024">Session Juillet 2024</option>
+                          <option value="Session Septembre 2024">Session Septembre 2024</option>
+                        </select>
+                      </div>
+
                       <!-- Bouton Effacer -->
                       <div class="d-grid">
                         <button type="button" class="btn btn-outline-secondary btn-sm" id="clearFilters">
@@ -711,7 +690,8 @@
                 <th>E-mail</th>
                 <th>Pays</th>
                 <th>Téléphone</th>
-                                    <th>Formation</th>
+                <th>Formation</th>
+                <th>Session</th>
               </tr>
             </thead>
 
@@ -739,6 +719,7 @@
                 <td>United Kingdom</td>
                 <td>+1-202-555-0140</td>
                 <td>Dev web</td>
+                <td>Session Janvier 2024</td>
               </tr>
 
               <tr>
@@ -764,6 +745,7 @@
                 <td>United States</td>
                 <td>+1-752-235-2353</td>
                 <td>Marketing Digital</td>
+                <td>Session Mars 2024</td>
               </tr>
 
               <tr>
@@ -789,6 +771,7 @@
                 <td>United States</td>
                 <td>+1-235-364-2611</td>
                 <td>Gestion de Projet</td>
+                <td>Session Mai 2024</td>
               </tr>
 
               <tr>
@@ -814,6 +797,7 @@
                 <td>Argentina</td>
                 <td>+1-743-632-9574</td>
                 <td>Design Graphique</td>
+                <td>Session Juillet 2024</td>
               </tr>
 
               <tr>
@@ -839,6 +823,7 @@
                 <td>Austria</td>
                 <td>+1-854-235-9755</td>
                 <td>Comptabilité</td>
+                <td>Session Septembre 2024</td>
               </tr>
             </tbody>
           </table>
@@ -894,7 +879,7 @@
     <div class="footer">
       <div class="row justify-content-between align-items-center">
         <div class="col">
-          <p class="fs-6 mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
+          <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
         </div>
         <!-- End Col -->
         <!-- End Col -->
@@ -2924,9 +2909,13 @@
         datatable.column(5).search(this.value).draw();
       });
 
+      $('#filterSession').on('change', function() {
+        datatable.column(6).search(this.value).draw();
+      });
+
       // Bouton pour effacer tous les filtres
       $('#clearFilters').on('click', function() {
-        $('#filterNom, #filterEmail, #filterPays, #filterTelephone, #filterFormation').val('');
+        $('#filterNom, #filterEmail, #filterPays, #filterTelephone, #filterFormation, #filterSession').val('');
         datatable.search('').columns().search('').draw();
       });
     });

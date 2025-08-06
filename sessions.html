@@ -135,15 +135,7 @@
             <div class="nav-item">
               <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Gérer formations</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une formation -->
-            <div class="nav-item">
-              <a class="nav-link" href="formations-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une formation</span>
+                                        <span class="nav-link-title">Gestion des formations</span>
               </a>
             </div>
 
@@ -151,23 +143,15 @@
             <div class="nav-item">
               <a class="nav-link active" href="sessions.html">
                 <i class="bi-calendar-event nav-icon"></i>
-                <span class="nav-link-title">Gérer sessions</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une session -->
-            <div class="nav-item">
-              <a class="nav-link" href="sessions-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une session</span>
+                <span class="nav-link-title">Gestion des sessions</span>
               </a>
             </div>
 
             <!-- Inscriptions -->
             <div class="nav-item">
               <a class="nav-link" href="inscriptions.html">
-                <i class="bi-people nav-icon"></i>
-                <span class="nav-link-title">Etat payement</span>
+                <i class="bi-credit-card nav-icon"></i>
+                <span class="nav-link-title">État des paiements</span>
               </a>
             </div>
 
@@ -175,7 +159,7 @@
             <div class="nav-item">
               <a class="nav-link" href="etudiants.html">
                 <i class="bi-person nav-icon"></i>
-                <span class="nav-link-title">Participants</span>
+                <span class="nav-link-title">Gestion des participants</span>
               </a>
             </div>
 
@@ -183,23 +167,7 @@
             <div class="nav-item">
               <a class="nav-link" href="instructeurs-liste.html">
                 <i class="bi-person-badge nav-icon"></i>
-                <span class="nav-link-title">Formateurs</span>
-              </a>
-            </div>
-
-            <!-- Ajouter un instructeur -->
-            <div class="nav-item">
-              <a class="nav-link" href="instructeurs.html">
-                <i class="bi-person-plus nav-icon"></i>
-                <span class="nav-link-title">Ajouter un formateur</span>
-              </a>
-            </div>
-
-            <!-- Rapports -->
-            <div class="nav-item">
-              <a class="nav-link" href="rapports.html">
-                <i class="bi-graph-up nav-icon"></i>
-                <span class="nav-link-title">Rapports</span>
+                <span class="nav-link-title">Gestion des formateurs</span>
               </a>
             </div>
           </div>
@@ -214,9 +182,17 @@
     <div class="content container-fluid">
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-header-title">Gestion des sessions</h1>
-
-        
+        <div class="row align-items-center">
+          <div class="col">
+            <h1 class="page-header-title">Gestion des sessions</h1>
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-primary" href="sessions-add.html">
+              <i class="bi-plus me-1"></i>
+              Ajouter une session
+            </a>
+          </div>
+        </div>
       </div>
       <!-- End Page Header -->
 
@@ -238,23 +214,7 @@
           </div>
 
           <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
-            <!-- Select -->
-            <div class="tom-select-custom tom-select-custom-end">
-              <select class="js-select js-datatable-filter form-select form-select-sm" data-target-column-index="5" data-hs-tom-select-options='{
-                        "searchInDropdown": false,
-                        "hideSearch": true,
-                        "dropdownWidth": "11rem",
-                        "placeholder": "Filtres",
-                        "dropdownWrapperClass": "tom-select-custom tom-select-custom-end"
-                      }'>
-                <option value="null" selected>Toutes les sessions</option>
-                <option value="web">Web Development</option>
-                <option value="data">Data Science</option>
-                <option value="mobile">Mobile Development</option>
-                <option value="design">Design</option>
-              </select>
-            </div>
-            <!-- End Select -->
+
           </div>
         </div>
         <!-- End Header -->
@@ -285,11 +245,13 @@
                     <label class="form-check-label" for="datatableCheckAll"></label>
                   </div>
                 </th>
-                <th>Session</th>
-                <th>Formateur</th>
-                <th>Description</th>
+                <th>Formation</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Localisation</th>
+                <th>Type</th>
                 <th>Prix</th>
-                <th>Catégorie</th>
+                <th>Statut</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -308,38 +270,34 @@
                       <img class="avatar-img" src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
                     </div>
                     <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-dark text-inherit">Développement Web Full-Stack avec React & Node.js</span>
-                      <span class="d-block fs-6 text-body">12 semaines • Intermédiaire</span>
+                      <span class="card-title h5 text-dark text-inherit">Formation en Développement Web</span>
+                      <span class="d-block fs-6 text-body">Marie Dubois • 12 semaines</span>
                     </div>
                   </a>
                 </th>
                 <td>
-                  <a class="d-flex align-items-center" href="#">
-                    <div class="avatar avatar-circle">
-                      <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Instructeur">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-inherit">Marie Dubois</span>
-                      <span class="d-block fs-6 text-body">marie.dubois@formation.com</span>
-                    </div>
-                  </a>
+                  <span class="text-dark">15/03/2024</span>
                 </td>
                 <td>
-                  <div class="text-wrap" style="width: 18rem;">
-                    <p>Apprenez à créer des applications web complètes avec React, Node.js, Express et MongoDB. Formation pratique avec projets réels.</p>
-                    <div class="d-flex align-items-center mt-2">
-                      <span class="badge bg-soft-success text-success me-2">4.8 ★</span>
-                      <span class="text-muted">2,450 étudiants</span>
-                    </div>
+                  <span class="text-dark">15/06/2024</span>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="fw-bold">Paris, France</span>
+                    <span class="text-muted">Centre de formation</span>
                   </div>
+                </td>
+                <td>
+                  <span class="badge bg-soft-primary text-primary">Présentiel</span>
                 </td>
                 <td>
                   <div class="d-flex flex-column">
                     <span class="h5 text-success mb-0">899 F CFA</span>
-                    <span class="text-muted text-decoration-line-through">1299 F CFA</span>
                   </div>
                 </td>
-                <td><span class="badge bg-soft-primary text-primary">Web Development</span></td>
+                <td>
+                  <span class="badge bg-soft-success text-success">Active</span>
+                </td>
                 <td>
                   <!-- Unfold -->
                   <div class="hs-unfold">
@@ -350,17 +308,11 @@
                     <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown1">
                       <span class="dropdown-header">Actions</span>
 
-                      <a class="dropdown-item" href="formation-edit.html">
+                      <a class="dropdown-item" href="session-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
                       <a class="dropdown-item" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
-                      </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-archive dropdown-item-icon"></i> Archiver
-                      </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
                       </a>
                     </div>
                   </div>
@@ -381,38 +333,34 @@
                       <img class="avatar-img" src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
                     </div>
                     <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-dark text-inherit">Data Science & Machine Learning</span>
-                      <span class="d-block fs-6 text-body">16 semaines • Avancé</span>
+                      <span class="card-title h5 text-dark text-inherit">Formation en Data Science</span>
+                      <span class="d-block fs-6 text-body">Alexandre Martin • 16 semaines</span>
                     </div>
                   </a>
                 </th>
                 <td>
-                  <a class="d-flex align-items-center" href="#">
-                    <div class="avatar avatar-soft-dark avatar-circle">
-                      <span class="avatar-initials">A</span>
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-dark text-inherit">Alexandre Martin</span>
-                      <span class="d-block fs-6 text-body">alexandre.martin@formation.com</span>
-                    </div>
-                  </a>
+                  <span class="text-dark">01/04/2024</span>
                 </td>
                 <td>
-                  <div class="text-wrap" style="width: 18rem;">
-                    <p>Maîtrisez les concepts fondamentaux de la data science, du machine learning et de l'intelligence artificielle.</p>
-                    <div class="d-flex align-items-center mt-2">
-                      <span class="badge bg-soft-success text-success me-2">4.9 ★</span>
-                      <span class="text-muted">1,850 étudiants</span>
-                    </div>
+                  <span class="text-dark">31/07/2024</span>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="fw-bold">Lyon, France</span>
+                    <span class="text-muted">Institut de formation</span>
                   </div>
+                </td>
+                <td>
+                  <span class="badge bg-soft-info text-info">Hybride</span>
                 </td>
                 <td>
                   <div class="d-flex flex-column">
                     <span class="h5 text-success mb-0">1299 F CFA</span>
-                    <span class="text-muted text-decoration-line-through">1799 F CFA</span>
                   </div>
                 </td>
-                <td><span class="badge bg-soft-info text-info">Data Science</span></td>
+                <td>
+                  <span class="badge bg-soft-success text-success">Active</span>
+                </td>
                 <td>
                   <!-- Unfold -->
                   <div class="hs-unfold">
@@ -423,17 +371,11 @@
                     <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown2">
                       <span class="dropdown-header">Actions</span>
 
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="session-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
                       <a class="dropdown-item" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
-                      </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-archive dropdown-item-icon"></i> Archiver
-                      </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
                       </a>
                     </div>
                   </div>
@@ -454,38 +396,34 @@
                       <img class="avatar-img" src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
                     </div>
                     <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-dark text-inherit">Développement Mobile iOS & Android</span>
-                      <span class="d-block fs-6 text-body">14 semaines • Intermédiaire</span>
+                      <span class="card-title h5 text-dark text-inherit">Formation en Développement Mobile</span>
+                      <span class="d-block fs-6 text-body">Sophie Bernard • 14 semaines</span>
                     </div>
                   </a>
                 </th>
                 <td>
-                  <a class="d-flex align-items-center" href="#">
-                    <div class="avatar avatar-circle">
-                      <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Instructeur">
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      <span class="card-title h5 text-dark text-inherit">Sophie Bernard</span>
-                      <span class="d-block fs-6 text-body">sophie.bernard@formation.com</span>
-                    </div>
-                  </a>
+                  <span class="text-dark">10/05/2024</span>
                 </td>
                 <td>
-                  <div class="text-wrap" style="width: 18rem;">
-                    <p>Créez des applications mobiles natives pour iOS et Android avec Swift, Kotlin et React Native.</p>
-                    <div class="d-flex align-items-center mt-2">
-                      <span class="badge bg-soft-success text-success me-2">4.7 ★</span>
-                      <span class="text-muted">1,200 étudiants</span>
-                    </div>
+                  <span class="text-dark">10/08/2024</span>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="fw-bold">Marseille, France</span>
+                    <span class="text-muted">Centre technologique</span>
                   </div>
+                </td>
+                <td>
+                  <span class="badge bg-soft-warning text-warning">Distance</span>
                 </td>
                 <td>
                   <div class="d-flex flex-column">
                     <span class="h5 text-success mb-0">1099 F CFA</span>
-                    <span class="text-muted text-decoration-line-through">1499 F CFA</span>
                   </div>
                 </td>
-                <td><span class="badge bg-soft-warning text-warning">Mobile Development</span></td>
+                <td>
+                  <span class="badge bg-soft-warning text-warning">Inactive</span>
+                </td>
                 <td>
                   <!-- Unfold -->
                   <div class="hs-unfold">
@@ -496,17 +434,74 @@
                     <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown3">
                       <span class="dropdown-header">Actions</span>
 
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="session-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
                       <a class="dropdown-item" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
                       </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-archive dropdown-item-icon"></i> Archiver
+                    </div>
+                  </div>
+                  <!-- End Unfold -->
+                </td>
+              </tr>
+
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck5">
+                    <label class="form-check-label" for="usersDataCheck5"></label>
+                  </div>
+                </td>
+                <th>
+                  <a class="d-flex align-items-center" href="#">
+                    <div class="avatar">
+                      <img class="avatar-img" src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <span class="card-title h5 text-dark text-inherit">Formation en Design</span>
+                      <span class="d-block fs-6 text-body">Pierre Durand • 10 semaines</span>
+                    </div>
+                  </a>
+                </th>
+                <td>
+                  <span class="text-dark">20/06/2024</span>
+                </td>
+                <td>
+                  <span class="text-dark">20/08/2024</span>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="fw-bold">Bordeaux, France</span>
+                    <span class="text-muted">École de design</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge bg-soft-primary text-primary">Présentiel</span>
+                </td>
+                <td>
+                  <div class="d-flex flex-column">
+                    <span class="h5 text-success mb-0">799 F CFA</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge bg-soft-secondary text-secondary">Terminée</span>
+                </td>
+                <td>
+                  <!-- Unfold -->
+                  <div class="hs-unfold">
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="settingsDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi-three-dots-vertical"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="settingsDropdown4">
+                      <span class="dropdown-header">Actions</span>
+
+                      <a class="dropdown-item" href="session-edit.html">
+                        <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="javascript:;">
-                        <i class="bi-trash dropdown-item-icon"></i> Supprimer
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-eye dropdown-item-icon"></i> Voir
                       </a>
                     </div>
                   </div>
@@ -566,7 +561,7 @@
     <div class="footer">
       <div class="row justify-content-between align-items-center">
         <div class="col">
-          <p class="fs-6 mb-0">&copy; 2024 Centre de Formation. Tous droits réservés.</p>
+          <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
         </div>
         <!-- End Col -->
 

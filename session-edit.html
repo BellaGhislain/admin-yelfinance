@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Modifier Session | Admin Dashboard</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/vendor.min.css">
+  <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
+</head>
+
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
+  <!-- Header -->
+  <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
+    <div class="navbar-nav-wrap">
+      <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+        <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+      </a>
+      <div class="navbar-nav-wrap-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
+                <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                  <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
+                <div class="dropdown-item-text">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar avatar-sm avatar-circle">
+                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h5 class="mb-0">Admin</h5>
+                      <p class="card-text text-body">admin@formation.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Mon profil</a>
+                <a class="dropdown-item" href="#">Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Déconnexion</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white">
+    <div class="navbar-vertical-container">
+      <div class="navbar-vertical-footer-offset">
+        <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+          <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+        </a>
+        <div class="navbar-vertical-content">
+          <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
+            <div class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi-house-door nav-icon"></i>
+                <span class="nav-link-title">Dashboard</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="formations.html">
+                <i class="bi-book nav-icon"></i>
+                <span class="nav-link-title">Gestion des formations</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="formations-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une formation</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link active" href="sessions.html">
+                <i class="bi-calendar-event nav-icon"></i>
+                <span class="nav-link-title">Gestion des sessions</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="sessions-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une session</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="inscriptions.html">
+                <i class="bi-credit-card nav-icon"></i>
+                <span class="nav-link-title">État des paiements</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="etudiants.html">
+                <i class="bi-person nav-icon"></i>
+                <span class="nav-link-title">Gestion des participants</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="instructeurs-liste.html">
+                <i class="bi-person-badge nav-icon"></i>
+                <span class="nav-link-title">Gestion des formateurs</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="instructeurs.html">
+                <i class="bi-person-plus nav-icon"></i>
+                <span class="nav-link-title">Ajouter un formateur</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="rapports.html">
+                <i class="bi-graph-up nav-icon"></i>
+                <span class="nav-link-title">Rapports</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="content" role="main" class="main">
+    <div class="content container-fluid">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h1 class="page-header-title">Modifier Session</h1>
+            <p class="page-header-text">Modifiez les informations de la session</p>
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-primary" href="sessions.html">
+              <i class="bi-arrow-left me-1"></i>
+              Retour aux sessions
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Card -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Informations de la session</h4>
+            </div>
+
+            <div class="card-body">
+              <form id="sessionEditForm">
+                <!-- Formation -->
+                <div class="row mb-4">
+                  <label for="formationSelect" class="col-sm-3 col-form-label form-label">Formation <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <select class="form-select" name="formationSelect" id="formationSelect" required>
+                      <option value="">Sélectionner une formation</option>
+                      <option value="web-dev" selected>Formation en Développement Web</option>
+                      <option value="data-science">Formation en Data Science</option>
+                      <option value="mobile-dev">Formation en Développement Mobile</option>
+                      <option value="design">Formation en Design</option>
+                      <option value="marketing">Formation en Marketing Digital</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Dates -->
+                <div class="row mb-4">
+                  <label for="startDate" class="col-sm-3 col-form-label form-label">Date de début <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" name="startDate" id="startDate" value="2024-03-15" required>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="endDate" class="col-sm-3 col-form-label form-label">Date de fin <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" name="endDate" id="endDate" value="2024-06-15" required>
+                  </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="row mb-4">
+                  <label for="country" class="col-sm-3 col-form-label form-label">Pays <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="country" id="country" placeholder="Ex: France" value="France" required>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="city" class="col-sm-3 col-form-label form-label">Ville <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Ex: Paris" value="Paris" required>
+                  </div>
+                </div>
+
+                <!-- Type de formation -->
+                <div class="row mb-4">
+                  <label for="trainingType" class="col-sm-3 col-form-label form-label">Type de formation <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <select class="form-select" name="trainingType" id="trainingType" required>
+                      <option value="">Sélectionner le type de formation</option>
+                      <option value="presentiel" selected>Présentiel</option>
+                      <option value="distance">Distance</option>
+                      <option value="hybride">Hybride</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Prix -->
+                <div class="row mb-4">
+                  <label for="price" class="col-sm-3 col-form-label form-label">Prix <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <div class="input-group">
+                      <input type="number" class="form-control" name="price" id="price" placeholder="0" value="899" min="0" step="0.01" required>
+                      <div class="input-group-append">
+                        <select class="form-select" style="width: auto;">
+                          <option value="FCFA" selected>F CFA</option>
+                          <option value="EUR">EUR</option>
+                          <option value="USD">USD</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Statut -->
+                <div class="row mb-4">
+                  <label for="sessionStatus" class="col-sm-3 col-form-label form-label">Statut <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <select class="form-select" name="sessionStatus" id="sessionStatus" required>
+                      <option value="active" selected>Active</option>
+                      <option value="inactive">Inactive</option>
+                      <option value="completed">Terminée</option>
+                      <option value="cancelled">Annulée</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Boutons -->
+                <div class="row">
+                  <div class="col-sm-9 offset-sm-3">
+                    <div class="d-flex justify-content-end gap-3">
+                      <button type="button" class="btn btn-white" onclick="window.location.href='sessions.html'">
+                        Annuler
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="bi-check-circle me-1"></i>
+                        Enregistrer les modifications
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <!-- Aperçu -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Aperçu de la session</h4>
+            </div>
+            <div class="card-body">
+              <div class="text-center mb-4">
+                <div class="avatar avatar-4x3 mb-3">
+                  <img class="avatar-img" src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Session" style="max-height: 150px;">
+                </div>
+              </div>
+              <h5 class="mb-2">Session Développement Web</h5>
+              <p class="text-muted mb-3">Formation en Développement Web - Session de printemps 2024</p>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge bg-soft-primary text-primary">Présentiel</span>
+                <span class="badge bg-soft-success text-success">Active</span>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Période:</span>
+                <span class="fw-bold">15/03/2024 - 15/06/2024</span>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Lieu:</span>
+                <span class="fw-bold">Paris, France</span>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="text-muted">Prix:</span>
+                <span class="h5 text-success mb-0">899 F CFA</span>
+              </div>
+              
+              <div class="d-flex align-items-center mb-3">
+                <span class="badge bg-soft-info text-info me-2">25 participants</span>
+                <span class="text-muted">inscrits</span>
+              </div>
+              
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-primary" onclick="previewSession()">
+                  <i class="bi-eye me-1"></i>
+                  Aperçu public
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions rapides -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Actions rapides</h4>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-secondary" onclick="duplicateSession()">
+                  <i class="bi-files me-1"></i>
+                  Dupliquer la session
+                </button>
+                <button type="button" class="btn btn-outline-warning" onclick="archiveSession()">
+                  <i class="bi-archive me-1"></i>
+                  Archiver
+                </button>
+                <button type="button" class="btn btn-outline-danger" onclick="deleteSession()">
+                  <i class="bi-trash me-1"></i>
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="row justify-content-between align-items-center">
+        <div class="col">
+          <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex justify-content-end">
+            <ul class="list-inline list-separator">
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">FAQ</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor.min.js"></script>
+  <script src="assets/js/theme.min.js"></script>
+
+  <script>
+    (function() {
+      window.onload = function () {
+        const form = document.getElementById('sessionEditForm');
+        
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Validation basique
+          const formation = document.getElementById('formationSelect').value;
+          const startDate = document.getElementById('startDate').value;
+          const endDate = document.getElementById('endDate').value;
+          const country = document.getElementById('country').value;
+          const city = document.getElementById('city').value;
+          const trainingType = document.getElementById('trainingType').value;
+          const price = document.getElementById('price').value;
+          const status = document.getElementById('sessionStatus').value;
+          
+          if (!formation || !startDate || !endDate || !country || !city || !trainingType || !price || !status) {
+            alert('Veuillez remplir tous les champs obligatoires.');
+            return;
+          }
+          
+          // Validation des dates
+          if (new Date(startDate) >= new Date(endDate)) {
+            alert('La date de fin doit être postérieure à la date de début.');
+            return;
+          }
+          
+          saveSession();
+        });
+
+        // Mise à jour de l'aperçu en temps réel
+        const inputs = form.querySelectorAll('input, select');
+        inputs.forEach(input => {
+          input.addEventListener('input', updatePreview);
+        });
+      }
+    })();
+
+    function saveSession() {
+      const saveButton = document.querySelector('button[type="submit"]');
+      const originalText = saveButton.innerHTML;
+      
+      saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
+      saveButton.disabled = true;
+      
+      setTimeout(() => {
+        saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
+        saveButton.classList.remove('btn-primary');
+        saveButton.classList.add('btn-success');
+        
+        setTimeout(() => {
+          saveButton.innerHTML = originalText;
+          saveButton.classList.remove('btn-success');
+          saveButton.classList.add('btn-primary');
+          saveButton.disabled = false;
+          
+          window.location.href = 'sessions.html';
+        }, 2000);
+      }, 1500);
+    }
+
+    function updatePreview() {
+      const formation = document.getElementById('formationSelect');
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const country = document.getElementById('country').value;
+      const city = document.getElementById('city').value;
+      const trainingType = document.getElementById('trainingType').value;
+      const price = document.getElementById('price').value;
+      const status = document.getElementById('sessionStatus').value;
+      
+      const previewTitle = document.querySelector('.card-body h5');
+      const previewDescription = document.querySelector('.card-body p');
+      const previewTrainingType = document.querySelector('.badge.bg-soft-primary');
+      const previewStatus = document.querySelector('.badge.bg-soft-success');
+      const previewPeriod = document.querySelector('.d-flex.justify-content-between:nth-child(2) .fw-bold');
+      const previewLocation = document.querySelector('.d-flex.justify-content-between:nth-child(3) .fw-bold');
+      const previewPrice = document.querySelector('.h5.text-success');
+      
+      if (previewTitle) {
+        const formationText = formation.options[formation.selectedIndex].text;
+        previewTitle.textContent = `Session ${formationText.split(' ')[1]}`;
+      }
+      if (previewDescription) {
+        const formationText = formation.options[formation.selectedIndex].text;
+        previewDescription.textContent = `${formationText} - Session de printemps 2024`;
+      }
+      if (previewTrainingType) previewTrainingType.textContent = getTrainingTypeText(trainingType);
+      if (previewStatus) previewStatus.textContent = getStatusText(status);
+      if (previewPeriod && startDate && endDate) {
+        const start = new Date(startDate).toLocaleDateString('fr-FR');
+        const end = new Date(endDate).toLocaleDateString('fr-FR');
+        previewPeriod.textContent = `${start} - ${end}`;
+      }
+      if (previewLocation && city && country) {
+        previewLocation.textContent = `${city}, ${country}`;
+      }
+      if (previewPrice && price) {
+        previewPrice.textContent = `${price} F CFA`;
+      }
+    }
+
+    function getTrainingTypeText(type) {
+      const types = {
+        'presentiel': 'Présentiel',
+        'distance': 'Distance',
+        'hybride': 'Hybride'
+      };
+      return types[type] || 'Type';
+    }
+
+    function getStatusText(status) {
+      const statuses = {
+        'active': 'Active',
+        'inactive': 'Inactive',
+        'completed': 'Terminée',
+        'cancelled': 'Annulée'
+      };
+      return statuses[status] || 'Statut';
+    }
+
+    function previewSession() {
+      alert('Aperçu de la session - Cette fonctionnalité ouvrira la session dans un nouvel onglet');
+    }
+
+    function duplicateSession() {
+      if (confirm('Voulez-vous dupliquer cette session ?')) {
+        alert('Session dupliquée avec succès !');
+      }
+    }
+
+    function archiveSession() {
+      if (confirm('Voulez-vous archiver cette session ?')) {
+        alert('Session archivée avec succès !');
+        window.location.href = 'sessions.html';
+      }
+    }
+
+    function deleteSession() {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cette session ? Cette action est irréversible.')) {
+        alert('Session supprimée avec succès !');
+        window.location.href = 'sessions.html';
+      }
+    }
+  </script>
+</body>
+</html> 

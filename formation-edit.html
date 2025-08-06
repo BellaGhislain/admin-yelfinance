@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Modifier Formation | Admin Dashboard</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/vendor.min.css">
+  <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
+</head>
+
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
+  <!-- Header -->
+  <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
+    <div class="navbar-nav-wrap">
+      <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+        <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+      </a>
+      <div class="navbar-nav-wrap-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation>
+                <div class="avatar avatar-sm avatar-circle">
+                  <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                  <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
+                <div class="dropdown-item-text">
+                  <div class="d-flex align-items-center">
+                    <div class="avatar avatar-sm avatar-circle">
+                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <h5 class="mb-0">Admin</h5>
+                      <p class="card-text text-body">admin@formation.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Mon profil</a>
+                <a class="dropdown-item" href="#">Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Déconnexion</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white">
+    <div class="navbar-vertical-container">
+      <div class="navbar-vertical-footer-offset">
+        <a class="navbar-brand" href="index.html" aria-label="YEL'S FINANCES">
+          <span class="navbar-brand-brand text-warning fw-bold">YEL'S FINANCES</span>
+        </a>
+        <div class="navbar-vertical-content">
+          <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
+            <div class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="bi-house-door nav-icon"></i>
+                <span class="nav-link-title">Dashboard</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link active" href="formations.html">
+                <i class="bi-book nav-icon"></i>
+                <span class="nav-link-title">Gestion des formations</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="formations-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une formation</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="sessions.html">
+                <i class="bi-calendar-event nav-icon"></i>
+                <span class="nav-link-title">Gestion des sessions</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="sessions-add.html">
+                <i class="bi-plus-circle nav-icon"></i>
+                <span class="nav-link-title">Ajouter une session</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="inscriptions.html">
+                <i class="bi-credit-card nav-icon"></i>
+                <span class="nav-link-title">État des paiements</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="etudiants.html">
+                <i class="bi-person nav-icon"></i>
+                <span class="nav-link-title">Gestion des participants</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="instructeurs-liste.html">
+                <i class="bi-person-badge nav-icon"></i>
+                <span class="nav-link-title">Gestion des formateurs</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="instructeurs.html">
+                <i class="bi-person-plus nav-icon"></i>
+                <span class="nav-link-title">Ajouter un formateur</span>
+              </a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="rapports.html">
+                <i class="bi-graph-up nav-icon"></i>
+                <span class="nav-link-title">Rapports</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="content" role="main" class="main">
+    <div class="content container-fluid">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h1 class="page-header-title">Modifier Formation</h1>
+            <p class="page-header-text">Modifiez les informations de la formation</p>
+          </div>
+          <div class="col-auto">
+            <a class="btn btn-primary" href="formations.html">
+              <i class="bi-arrow-left me-1"></i>
+              Retour aux formations
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- Card -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Informations de la formation</h4>
+            </div>
+
+            <div class="card-body">
+              <form id="formationEditForm">
+                <!-- Titre -->
+                <div class="row mb-4">
+                  <label for="formationTitle" class="col-sm-3 col-form-label form-label">Titre de la formation <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="formationTitle" id="formationTitle" placeholder="Ex: Développement Web Full-Stack avec React & Node.js" value="Développement Web Full-Stack avec React & Node.js" required>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="row mb-4">
+                  <label for="formationDescription" class="col-sm-3 col-form-label form-label">Présentation de la formation <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" name="formationDescription" id="formationDescription" rows="6" placeholder="Décrivez en détail le contenu de la formation, les objectifs, les prérequis, etc..." required>Apprenez à créer des applications web complètes avec React, Node.js, Express et MongoDB. Formation pratique avec projets réels.</textarea>
+                  </div>
+                </div>
+
+                <!-- Compétences -->
+                <div class="row mb-4">
+                  <label class="col-sm-3 col-form-label form-label">Compétences que les apprenants vont acquérir</label>
+                  <div class="col-sm-9">
+                    <div id="skillsItemsContainer">
+                      <div class="mb-3 skill-item">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Maîtriser les langages HTML, CSS et JavaScript" value="Maîtriser React et ses concepts fondamentaux" required>
+                          <button type="button" class="btn btn-outline-danger remove-skill-item" style="display: none;">
+                            <i class="bi-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="mb-3 skill-item">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Développer des applications web responsives" value="Développer des APIs REST avec Node.js et Express" required>
+                          <button type="button" class="btn btn-outline-danger remove-skill-item">
+                            <i class="bi-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="mb-3 skill-item">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Utiliser les frameworks modernes (React, Vue.js)" value="Intégrer une base de données MongoDB" required>
+                          <button type="button" class="btn btn-outline-danger remove-skill-item">
+                            <i class="bi-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="addSkillItem">
+                      <i class="bi-plus-circle me-1"></i> Ajouter une compétence
+                    </button>
+                  </div>
+                </div>
+
+
+
+                <!-- Niveau -->
+                <div class="row mb-4">
+                  <label for="formationLevel" class="col-sm-3 col-form-label form-label">Niveau <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <select class="form-select" name="formationLevel" id="formationLevel" required>
+                      <option value="">Sélectionnez un niveau</option>
+                      <option value="debutant">Débutant</option>
+                      <option value="intermediaire" selected>Intermédiaire</option>
+                      <option value="avance">Avancé</option>
+                      <option value="expert">Expert</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Date de début -->
+                <div class="row mb-4">
+                  <label for="formationStartDate" class="col-sm-3 col-form-label form-label">Date de début <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" name="formationStartDate" id="formationStartDate" value="2024-02-01" required>
+                  </div>
+                </div>
+
+                <!-- Date de fin -->
+                <div class="row mb-4">
+                  <label for="formationEndDate" class="col-sm-3 col-form-label form-label">Date de fin <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" name="formationEndDate" id="formationEndDate" value="2024-04-30" required>
+                  </div>
+                </div>
+
+                <!-- Formateurs -->
+                <div class="row mb-4">
+                  <label class="col-sm-3 col-form-label form-label">Formateurs <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <div id="instructorsContainer">
+                      <!-- Formateur 1 -->
+                      <div class="mb-3 instructor-item">
+                        <div class="input-group">
+                          <select class="form-select" name="formationInstructor[]" required>
+                            <option value="">Sélectionnez un formateur</option>
+                            <option value="marie-dubois" selected>Marie Dubois - marie.dubois@formation.com</option>
+                            <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
+                            <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
+                            <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
+                          </select>
+                          <button type="button" class="btn btn-outline-danger remove-instructor-item" style="display: none;">
+                            <i class="bi-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="addInstructorItem">
+                      <i class="bi-plus-circle me-1"></i> Ajouter un formateur
+                    </button>
+                  </div>
+                </div>
+
+
+
+                <!-- Médias -->
+                <div class="row mb-4">
+                  <label class="col-sm-3 col-form-label form-label">Médias</label>
+                  <div class="col-sm-9">
+                    <div class="mb-3">
+                      <label for="youtubeLinkLabel" class="form-label">Lien de la vidéo YouTube</label>
+                      <input type="url" class="form-control" name="youtubeLink" id="youtubeLinkLabel" placeholder="https://www.youtube.com/watch?v=..." value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                      <span class="form-text">Mettez le lien de la vidéo expliquant la formation.</span>
+                    </div>
+                    <div class="mb-3">
+                      <label for="formationImage" class="form-label">Photo de la formation</label>
+                      <input type="file" class="form-control" name="formationImage" id="formationImage" accept="image/*">
+                      <span class="form-text">Téléchargez une image représentative de la formation (JPG, PNG, GIF).</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Statut -->
+                <div class="row mb-4">
+                  <label for="formationStatus" class="col-sm-3 col-form-label form-label">Statut <i class="bi-asterisk text-danger ms-1"></i></label>
+                  <div class="col-sm-9">
+                    <select class="form-select" name="formationStatus" id="formationStatus" required>
+                      <option value="active" selected>Active</option>
+                      <option value="inactive">Inactive</option>
+                      <option value="draft">Brouillon</option>
+                      <option value="archived">Archivée</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+
+
+                <!-- Boutons -->
+                <div class="row">
+                  <div class="col-sm-9 offset-sm-3">
+                    <div class="d-flex justify-content-end gap-3">
+                      <button type="button" class="btn btn-white" onclick="window.location.href='formations.html'">
+                        Annuler
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="bi-check-circle me-1"></i>
+                        Enregistrer les modifications
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <!-- Aperçu -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Aperçu de la formation</h4>
+            </div>
+            <div class="card-body">
+              <div class="text-center mb-4">
+                <img class="img-fluid rounded" src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Formation" style="max-height: 200px;">
+              </div>
+              <h5 class="mb-2">Développement Web Full-Stack avec React & Node.js</h5>
+              <p class="text-muted mb-3">Apprenez à créer des applications web complètes avec React, Node.js, Express et MongoDB. Formation pratique avec projets réels.</p>
+                             <div class="d-flex justify-content-between align-items-center mb-3">
+                 <span class="badge bg-soft-info text-info">Intermédiaire</span>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-3">
+                 <span class="text-muted">Période:</span>
+                 <span class="fw-bold">01/02/2024 - 30/04/2024</span>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-3">
+                 <span class="text-muted">Formateur:</span>
+                 <span class="fw-bold">Marie Dubois</span>
+               </div>
+              <div class="d-flex align-items-center mb-3">
+                <span class="badge bg-soft-success text-success me-2">4.8 ★</span>
+                <span class="text-muted">2,450 étudiants</span>
+              </div>
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-primary" onclick="previewFormation()">
+                  <i class="bi-eye me-1"></i>
+                  Aperçu public
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions rapides -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-header-title">Actions rapides</h4>
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-secondary" onclick="duplicateFormation()">
+                  <i class="bi-files me-1"></i>
+                  Dupliquer la formation
+                </button>
+                <button type="button" class="btn btn-outline-warning" onclick="archiveFormation()">
+                  <i class="bi-archive me-1"></i>
+                  Archiver
+                </button>
+                <button type="button" class="btn btn-outline-danger" onclick="deleteFormation()">
+                  <i class="bi-trash me-1"></i>
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="row justify-content-between align-items-center">
+        <div class="col">
+          <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex justify-content-end">
+            <ul class="list-inline list-separator">
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">FAQ</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="list-separator-link" href="#">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor.min.js"></script>
+  <script src="assets/js/theme.min.js"></script>
+
+     <script>
+     (function() {
+       window.onload = function () {
+         const form = document.getElementById('formationEditForm');
+         
+         form.addEventListener('submit', function(event) {
+           event.preventDefault();
+           
+           // Validation basique
+           const title = document.getElementById('formationTitle').value;
+           const description = document.getElementById('formationDescription').value;
+           const level = document.getElementById('formationLevel').value;
+           const startDate = document.getElementById('formationStartDate').value;
+           const endDate = document.getElementById('formationEndDate').value;
+           const status = document.getElementById('formationStatus').value;
+           
+           // Validation des formateurs
+           const instructorSelects = document.querySelectorAll('select[name="formationInstructor[]"]');
+           let hasValidInstructor = false;
+           instructorSelects.forEach(select => {
+             if (select.value) hasValidInstructor = true;
+           });
+           
+           if (!title || !description || !level || !startDate || !endDate || !hasValidInstructor || !status) {
+             alert('Veuillez remplir tous les champs obligatoires.');
+             return;
+           }
+           
+           saveFormation();
+         });
+
+         // Mise à jour de l'aperçu en temps réel
+         const inputs = form.querySelectorAll('input, select, textarea');
+         inputs.forEach(input => {
+           input.addEventListener('input', updatePreview);
+         });
+
+         // Gestion des compétences
+         const skillsContainer = document.getElementById('skillsItemsContainer');
+         const addSkillButton = document.getElementById('addSkillItem');
+
+         if (addSkillButton) {
+           addSkillButton.addEventListener('click', function() {
+             const newItem = document.createElement('div');
+             newItem.className = 'mb-3 skill-item';
+             newItem.innerHTML = `
+               <div class="input-group">
+                 <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Gérer les bases de données" required>
+                 <button type="button" class="btn btn-outline-danger remove-skill-item">
+                   <i class="bi-trash"></i>
+                 </button>
+               </div>
+             `;
+             skillsContainer.appendChild(newItem);
+             updateSkillRemoveButtons();
+           });
+         }
+
+         if (skillsContainer) {
+           skillsContainer.addEventListener('click', function(e) {
+             if (e.target.closest('.remove-skill-item')) {
+               e.target.closest('.skill-item').remove();
+               updateSkillRemoveButtons();
+             }
+           });
+         }
+
+         function updateSkillRemoveButtons() {
+           const items = skillsContainer.querySelectorAll('.skill-item');
+           const removeButtons = skillsContainer.querySelectorAll('.remove-skill-item');
+           
+           if (items.length === 1) {
+             removeButtons[0].style.display = 'none';
+           } else {
+             removeButtons.forEach(btn => btn.style.display = 'block');
+           }
+         }
+
+         updateSkillRemoveButtons();
+
+         // Gestion des formateurs
+         const instructorsContainer = document.getElementById('instructorsContainer');
+         const addInstructorButton = document.getElementById('addInstructorItem');
+
+         if (addInstructorButton) {
+           addInstructorButton.addEventListener('click', function() {
+             const newItem = document.createElement('div');
+             newItem.className = 'mb-3 instructor-item';
+             newItem.innerHTML = `
+               <div class="input-group">
+                 <select class="form-select" name="formationInstructor[]" required>
+                   <option value="">Sélectionnez un formateur</option>
+                   <option value="marie-dubois">Marie Dubois - marie.dubois@formation.com</option>
+                   <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
+                   <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
+                   <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
+                 </select>
+                 <button type="button" class="btn btn-outline-danger remove-instructor-item">
+                   <i class="bi-trash"></i>
+                 </button>
+               </div>
+             `;
+             instructorsContainer.appendChild(newItem);
+             updateInstructorRemoveButtons();
+           });
+         }
+
+         if (instructorsContainer) {
+           instructorsContainer.addEventListener('click', function(e) {
+             if (e.target.closest('.remove-instructor-item')) {
+               e.target.closest('.instructor-item').remove();
+               updateInstructorRemoveButtons();
+             }
+           });
+         }
+
+         function updateInstructorRemoveButtons() {
+           const items = instructorsContainer.querySelectorAll('.instructor-item');
+           const removeButtons = instructorsContainer.querySelectorAll('.remove-instructor-item');
+           
+           if (items.length === 1) {
+             removeButtons[0].style.display = 'none';
+           } else {
+             removeButtons.forEach(btn => btn.style.display = 'block');
+           }
+         }
+
+         updateInstructorRemoveButtons();
+       }
+     })();
+
+    function saveFormation() {
+      const saveButton = document.querySelector('button[type="submit"]');
+      const originalText = saveButton.innerHTML;
+      
+      saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
+      saveButton.disabled = true;
+      
+      setTimeout(() => {
+        saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
+        saveButton.classList.remove('btn-primary');
+        saveButton.classList.add('btn-success');
+        
+        setTimeout(() => {
+          saveButton.innerHTML = originalText;
+          saveButton.classList.remove('btn-success');
+          saveButton.classList.add('btn-primary');
+          saveButton.disabled = false;
+          
+          window.location.href = 'formations.html';
+        }, 2000);
+      }, 1500);
+    }
+
+         function updatePreview() {
+       const title = document.getElementById('formationTitle').value;
+       const description = document.getElementById('formationDescription').value;
+       const level = document.getElementById('formationLevel').value;
+       const startDate = document.getElementById('formationStartDate').value;
+       const endDate = document.getElementById('formationEndDate').value;
+       
+       const previewTitle = document.querySelector('.card-body h5');
+       const previewDescription = document.querySelector('.card-body p');
+       const previewLevel = document.querySelector('.badge.bg-soft-info');
+       const previewPeriod = document.querySelector('.d-flex.justify-content-between:nth-child(2) .fw-bold');
+       
+       if (previewTitle) previewTitle.textContent = title || 'Titre de la formation';
+       if (previewDescription) previewDescription.textContent = description || 'Description de la formation';
+       if (previewLevel) previewLevel.textContent = getLevelText(level);
+       if (previewPeriod && startDate && endDate) {
+         const start = new Date(startDate).toLocaleDateString('fr-FR');
+         const end = new Date(endDate).toLocaleDateString('fr-FR');
+         previewPeriod.textContent = `${start} - ${end}`;
+       }
+     }
+
+    function getLevelText(level) {
+      const levels = {
+        'debutant': 'Débutant',
+        'intermediaire': 'Intermédiaire',
+        'avance': 'Avancé',
+        'expert': 'Expert'
+      };
+      return levels[level] || 'Niveau';
+    }
+
+    function previewFormation() {
+      alert('Aperçu de la formation - Cette fonctionnalité ouvrira la formation dans un nouvel onglet');
+    }
+
+    function duplicateFormation() {
+      if (confirm('Voulez-vous dupliquer cette formation ?')) {
+        alert('Formation dupliquée avec succès !');
+      }
+    }
+
+    function archiveFormation() {
+      if (confirm('Voulez-vous archiver cette formation ?')) {
+        alert('Formation archivée avec succès !');
+        window.location.href = 'formations.html';
+      }
+    }
+
+    function deleteFormation() {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cette formation ? Cette action est irréversible.')) {
+        alert('Formation supprimée avec succès !');
+        window.location.href = 'formations.html';
+      }
+    }
+  </script>
+</body>
+</html> 

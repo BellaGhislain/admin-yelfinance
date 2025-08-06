@@ -459,15 +459,7 @@
             <div class="nav-item">
               <a class="nav-link" href="formations.html">
                 <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Gérer formations</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une formation -->
-            <div class="nav-item">
-              <a class="nav-link" href="formations-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une formation</span>
+                <span class="nav-link-title">Gestion des formations</span>
               </a>
             </div>
 
@@ -475,15 +467,7 @@
             <div class="nav-item">
               <a class="nav-link" href="sessions.html">
                 <i class="bi-calendar-event nav-icon"></i>
-                <span class="nav-link-title">Gérer sessions</span>
-              </a>
-            </div>
-
-            <!-- Ajouter une session -->
-            <div class="nav-item">
-              <a class="nav-link" href="sessions-add.html">
-                <i class="bi-plus-circle nav-icon"></i>
-                <span class="nav-link-title">Ajouter une session</span>
+                <span class="nav-link-title">Gestion des sessions</span>
               </a>
             </div>
 
@@ -499,7 +483,7 @@
             <div class="nav-item">
               <a class="nav-link" href="etudiants.html">
                 <i class="bi-people nav-icon"></i>
-                <span class="nav-link-title">Participants</span>
+                <span class="nav-link-title">Gestion des participants</span>
               </a>
             </div>
 
@@ -507,25 +491,7 @@
             <div class="nav-item">
               <a class="nav-link" href="instructeurs-liste.html">
                 <i class="bi-person-workspace nav-icon"></i>
-                <span class="nav-link-title">Formateurs</span>
-              </a>
-            </div>
-
-            <!-- Ajouter un instructeur -->
-            <div class="nav-item">
-              <a class="nav-link" href="instructeurs.html">
-                <i class="bi-person-plus nav-icon"></i>
-                <span class="nav-link-title">Ajouter un formateur</span>
-              </a>
-            </div>
-
-
-
-            <!-- Rapports -->
-            <div class="nav-item">
-              <a class="nav-link" href="rapports.html">
-                <i class="bi-graph-up nav-icon"></i>
-                <span class="nav-link-title">Rapports</span>
+                <span class="nav-link-title">Gestion des formateurs</span>
               </a>
             </div>
 
@@ -617,7 +583,7 @@
       <div class="page-header">
         <div class="row align-items-center mb-3">
           <div class="col-sm">
-            <h1 class="page-header-title">Etat des paiements <span class="badge bg-soft-dark text-dark ms-2">1,247</span></h1>
+            <h1 class="page-header-title">Etat de paiement <span class="badge bg-soft-dark text-dark ms-2">1,247</span></h1>
 
             <div class="d-flex mt-2">
               <a class="text-body me-3" href="javascript:;" data-bs-toggle="modal" data-bs-target="#exportOrdersModal">
@@ -697,6 +663,33 @@
           </div>
 
           <div class="d-grid d-sm-flex gap-2">
+            <!-- Filtre par session -->
+            <div class="dropdown">
+              <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="sessionFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi-funnel me-2"></i> Filtrer par session
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="sessionFilterDropdown">
+                <span class="dropdown-header">Sessions</span>
+                <a class="dropdown-item" href="javascript:;" data-session="all">
+                  <i class="bi-check-circle me-2"></i> Toutes les sessions
+                </a>
+                <a class="dropdown-item" href="javascript:;" data-session="web-jan24">
+                  <i class="bi-circle me-2"></i> Session Janvier 2024 - Web
+                </a>
+                <a class="dropdown-item" href="javascript:;" data-session="data-feb24">
+                  <i class="bi-circle me-2"></i> Session Février 2024 - Data
+                </a>
+                <a class="dropdown-item" href="javascript:;" data-session="design-mar24">
+                  <i class="bi-circle me-2"></i> Session Mars 2024 - Design
+                </a>
+                <a class="dropdown-item" href="javascript:;" data-session="mobile-apr24">
+                  <i class="bi-circle me-2"></i> Session Avril 2024 - Mobile
+                </a>
+              </div>
+            </div>
+            <!-- End Filtre -->
+
             <!-- Dropdown -->
             <div class="dropdown">
               <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -760,12 +753,14 @@
                     <label class="form-check-label" for="datatableCheckAll"></label>
                   </div>
                 </th>
-                <th class="table-column-ps-0">Commande</th>
+                <th class="table-column-ps-0">Inscription</th>
                 <th>Date</th>
-                <th>Client</th>
+                <th>Participant</th>
+                <th>Formation</th>
+                <th>Session</th>
                 <th>Statut de paiement</th>
                 <th>Méthode de paiement</th>
-                <th>Total</th>
+                <th>Montant</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -779,12 +774,14 @@
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a href="ecommerce-order-details.html">#35463</a>
+                  <a href="#">#INS001</a>
                 </td>
-                <td>Aug 17, 2020, 5:48 (ET)</td>
+                <td>15 Jan 2024</td>
                 <td>
-                  <a class="text-body" href="ecommerce-customer-details.html">Jase Marley</a>
+                  <a class="text-body" href="#">Marie Dubois</a>
                 </td>
+                <td>Développement Web Full-Stack</td>
+                <td>Session Janvier 2024</td>
                 <td>
                   <span class="badge bg-soft-success text-success">
                     <span class="legend-indicator bg-success"></span>Payé
@@ -796,7 +793,7 @@
                     <span class="text-dark">&bull;&bull;&bull;&bull; 4242</span>
                   </div>
                 </td>
-                <td>$256.39</td>
+                <td>1299 F CFA</td>
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="ecommerce-order-details.html">
@@ -850,12 +847,14 @@
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a href="ecommerce-order-details.html">#23513</a>
+                  <a href="#">#INS002</a>
                 </td>
-                <td>Aug 17, 2020, 2:01 (ET)</td>
+                <td>20 Jan 2024</td>
                 <td>
-                  <a class="text-body" href="ecommerce-customer-details.html">Mathew Gustaffson</a>
+                  <a class="text-body" href="#">Alexandre Martin</a>
                 </td>
+                <td>Data Science</td>
+                <td>Session Février 2024</td>
                 <td>
                   <span class="badge bg-soft-success text-success">
                     <span class="legend-indicator bg-success"></span>Payé
@@ -867,7 +866,7 @@
                     <span class="text-dark">&bull;&bull;&bull;&bull; 2390</span>
                   </div>
                 </td>
-                <td>$2,125.00</td>
+                <td>1899 F CFA</td>
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="ecommerce-order-details.html">
@@ -921,12 +920,14 @@
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a href="ecommerce-order-details.html">#62311</a>
+                  <a href="#">#INS003</a>
                 </td>
-                <td>Aug 17, 2020, 1:55 (ET)</td>
+                <td>25 Jan 2024</td>
                 <td>
-                  <a class="text-body" href="ecommerce-customer-details.html">Mathew Gustaffson</a>
+                  <a class="text-body" href="#">Sophie Bernard</a>
                 </td>
+                <td>Design UX/UI</td>
+                <td>Session Mars 2024</td>
                 <td>
                   <span class="badge bg-soft-success text-success">
                     <span class="legend-indicator bg-success"></span>Payé
@@ -938,7 +939,7 @@
                     <span class="text-dark">&bull;&bull;&bull;&bull;@gmail.com</span>
                   </div>
                 </td>
-                <td>$532.99</td>
+                <td>799 F CFA</td>
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="ecommerce-order-details.html">
@@ -992,15 +993,17 @@
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a href="ecommerce-order-details.html">#12453</a>
+                  <a href="#">#INS004</a>
                 </td>
-                <td>Aug 17, 2020, 1:54 (ET)</td>
+                <td>30 Jan 2024</td>
                 <td>
-                  <a class="text-body" href="ecommerce-customer-details.html">Nicky Olvsson</a>
+                  <a class="text-body" href="#">Pierre Durand</a>
                 </td>
+                <td>Développement Mobile</td>
+                <td>Session Avril 2024</td>
                 <td>
-                  <span class="badge bg-soft-warning text-warning">
-                    <span class="legend-indicator bg-warning"></span>En attente
+                  <span class="badge bg-soft-success text-success">
+                    <span class="legend-indicator bg-success"></span>Payé
                   </span>
                 </td>
                 <td>
@@ -1009,7 +1012,7 @@
                     <span class="text-dark">&bull;&bull;&bull;&bull; 3535</span>
                   </div>
                 </td>
-                <td>$1,035.02</td>
+                <td>1599 F CFA</td>
                 <td>
                   <div class="btn-group" role="group">
                     <a class="btn btn-white btn-sm" href="ecommerce-order-details.html">
@@ -2240,7 +2243,7 @@
     <div class="footer">
       <div class="row justify-content-between align-items-center">
         <div class="col">
-          <p class="fs-6 mb-0">&Copier; Front. <span class="d-none d-sm-inline-block">2022 YEL.</span></p>
+          <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
         </div>
         <!-- End Col -->
 
@@ -4733,6 +4736,41 @@
       $('#toggleColumn_actions').change(function (e) {
         datatable.columns(8).visible(e.target.checked)
       })
+
+      // Filtre par session
+      $('[data-session]').on('click', function() {
+        const selectedSession = $(this).data('session');
+        
+        // Mettre à jour l'icône active
+        $('[data-session] i').removeClass('bi-check-circle').addClass('bi-circle');
+        $(this).find('i').removeClass('bi-circle').addClass('bi-check-circle');
+        
+        // Mettre à jour le texte du bouton
+        const sessionText = $(this).text().trim();
+        $('#sessionFilterDropdown').html(`<i class="bi-funnel me-2"></i> ${sessionText}`);
+        
+        // Filtrer le tableau
+        if (selectedSession === 'all') {
+          datatable.column(4).search('').draw(); // Colonne Session
+        } else {
+          let searchTerm = '';
+          switch(selectedSession) {
+            case 'web-jan24':
+              searchTerm = 'Session Janvier 2024';
+              break;
+            case 'data-feb24':
+              searchTerm = 'Session Février 2024';
+              break;
+            case 'design-mar24':
+              searchTerm = 'Session Mars 2024';
+              break;
+            case 'mobile-apr24':
+              searchTerm = 'Session Avril 2024';
+              break;
+          }
+          datatable.column(4).search(searchTerm).draw(); // Colonne Session
+        }
+      });
     });
   </script>
 
