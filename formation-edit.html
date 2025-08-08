@@ -225,21 +225,7 @@
                   </div>
                 </div>
 
-                <!-- Date de début -->
-                <div class="row mb-4">
-                  <label for="formationStartDate" class="col-sm-3 col-form-label form-label">Date de début <i class="bi-asterisk text-danger ms-1"></i></label>
-                  <div class="col-sm-9">
-                    <input type="date" class="form-control" name="formationStartDate" id="formationStartDate" value="2024-02-01" required>
-                  </div>
-                </div>
 
-                <!-- Date de fin -->
-                <div class="row mb-4">
-                  <label for="formationEndDate" class="col-sm-3 col-form-label form-label">Date de fin <i class="bi-asterisk text-danger ms-1"></i></label>
-                  <div class="col-sm-9">
-                    <input type="date" class="form-control" name="formationEndDate" id="formationEndDate" value="2024-04-30" required>
-                  </div>
-                </div>
 
                 <!-- Formateurs -->
                 <div class="row mb-4">
@@ -288,18 +274,7 @@
                   </div>
                 </div>
 
-                <!-- Statut -->
-                <div class="row mb-4">
-                  <label for="formationStatus" class="col-sm-3 col-form-label form-label">Statut <i class="bi-asterisk text-danger ms-1"></i></label>
-                  <div class="col-sm-9">
-                    <select class="form-select" name="formationStatus" id="formationStatus" required>
-                      <option value="active" selected>Active</option>
-                      <option value="inactive">Inactive</option>
-                      <option value="draft">Brouillon</option>
-                      <option value="archived">Archivée</option>
-                    </select>
-                  </div>
-                </div>
+
 
 
 
@@ -340,10 +315,7 @@
                              <div class="d-flex justify-content-between align-items-center mb-3">
                  <span class="badge bg-soft-info text-info">Intermédiaire</span>
                </div>
-               <div class="d-flex justify-content-between align-items-center mb-3">
-                 <span class="text-muted">Période:</span>
-                 <span class="fw-bold">01/02/2024 - 30/04/2024</span>
-               </div>
+
                <div class="d-flex justify-content-between align-items-center mb-3">
                  <span class="text-muted">Formateur:</span>
                  <span class="fw-bold">Marie Dubois</span>
@@ -372,14 +344,10 @@
                   <i class="bi-files me-1"></i>
                   Dupliquer la formation
                 </button>
-                <button type="button" class="btn btn-outline-warning" onclick="archiveFormation()">
-                  <i class="bi-archive me-1"></i>
-                  Archiver
-                </button>
-                <button type="button" class="btn btn-outline-danger" onclick="deleteFormation()">
-                  <i class="bi-trash me-1"></i>
-                  Supprimer
-                </button>
+                                 <button type="button" class="btn btn-outline-success" onclick="toggleFormationStatus()">
+                   <i class="bi-toggle-on me-1"></i>
+                   <span id="statusButtonText">Activer</span>
+                 </button>
               </div>
             </div>
           </div>
@@ -406,10 +374,36 @@
           </div>
         </div>
       </div>
-    </div>
-  </main>
-
-  <!-- Scripts -->
+         </div>
+   </main>
+ 
+   <!-- Modal de confirmation pour activer/désactiver -->
+   <div class="modal fade" id="confirmToggleModal" tabindex="-1" aria-labelledby="confirmToggleModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="toggleModalTitle">
+             <i class="bi-exclamation-triangle text-warning me-2"></i>
+             Confirmer l'action
+           </h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body" id="toggleModalBody">
+           <p class="mb-0">Êtes-vous sûr de vouloir effectuer cette action ?</p>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+             <i class="bi-x-circle me-1"></i>Annuler
+           </button>
+           <button type="button" class="btn btn-primary" id="confirmToggleBtn">
+             <i class="bi-check-circle me-1"></i>Confirmer
+           </button>
+         </div>
+       </div>
+     </div>
+   </div>
+ 
+   <!-- Scripts -->
   <script src="assets/js/vendor.min.js"></script>
   <script src="assets/js/theme.min.js"></script>
 
@@ -418,31 +412,28 @@
        window.onload = function () {
          const form = document.getElementById('formationEditForm');
          
-         form.addEventListener('submit', function(event) {
-           event.preventDefault();
-           
-           // Validation basique
-           const title = document.getElementById('formationTitle').value;
-           const description = document.getElementById('formationDescription').value;
-           const level = document.getElementById('formationLevel').value;
-           const startDate = document.getElementById('formationStartDate').value;
-           const endDate = document.getElementById('formationEndDate').value;
-           const status = document.getElementById('formationStatus').value;
-           
-           // Validation des formateurs
-           const instructorSelects = document.querySelectorAll('select[name="formationInstructor[]"]');
-           let hasValidInstructor = false;
-           instructorSelects.forEach(select => {
-             if (select.value) hasValidInstructor = true;
-           });
-           
-           if (!title || !description || !level || !startDate || !endDate || !hasValidInstructor || !status) {
-             alert('Veuillez remplir tous les champs obligatoires.');
-             return;
-           }
-           
-           saveFormation();
-         });
+                   form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Validation basique
+            const title = document.getElementById('formationTitle').value;
+            const description = document.getElementById('formationDescription').value;
+            const level = document.getElementById('formationLevel').value;
+            
+            // Validation des formateurs
+            const instructorSelects = document.querySelectorAll('select[name="formationInstructor[]"]');
+            let hasValidInstructor = false;
+            instructorSelects.forEach(select => {
+              if (select.value) hasValidInstructor = true;
+            });
+            
+            if (!title || !description || !level || !hasValidInstructor) {
+              alert('Veuillez remplir tous les champs obligatoires.');
+              return;
+            }
+            
+            saveFormation();
+          });
 
          // Mise à jour de l'aperçu en temps réel
          const inputs = form.querySelectorAll('input, select, textarea');
@@ -544,50 +535,46 @@
        }
      })();
 
-    function saveFormation() {
-      const saveButton = document.querySelector('button[type="submit"]');
-      const originalText = saveButton.innerHTML;
-      
-      saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
-      saveButton.disabled = true;
-      
-      setTimeout(() => {
-        saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
-        saveButton.classList.remove('btn-primary');
-        saveButton.classList.add('btn-success');
-        
-        setTimeout(() => {
-          saveButton.innerHTML = originalText;
-          saveButton.classList.remove('btn-success');
-          saveButton.classList.add('btn-primary');
-          saveButton.disabled = false;
-          
-          window.location.href = 'formations.html';
-        }, 2000);
-      }, 1500);
-    }
-
-         function updatePreview() {
-       const title = document.getElementById('formationTitle').value;
-       const description = document.getElementById('formationDescription').value;
-       const level = document.getElementById('formationLevel').value;
-       const startDate = document.getElementById('formationStartDate').value;
-       const endDate = document.getElementById('formationEndDate').value;
+         function saveFormation() {
+       const saveButton = document.querySelector('button[type="submit"]');
+       const originalText = saveButton.innerHTML;
        
-       const previewTitle = document.querySelector('.card-body h5');
-       const previewDescription = document.querySelector('.card-body p');
-       const previewLevel = document.querySelector('.badge.bg-soft-info');
-       const previewPeriod = document.querySelector('.d-flex.justify-content-between:nth-child(2) .fw-bold');
+       saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
+       saveButton.disabled = true;
        
-       if (previewTitle) previewTitle.textContent = title || 'Titre de la formation';
-       if (previewDescription) previewDescription.textContent = description || 'Description de la formation';
-       if (previewLevel) previewLevel.textContent = getLevelText(level);
-       if (previewPeriod && startDate && endDate) {
-         const start = new Date(startDate).toLocaleDateString('fr-FR');
-         const end = new Date(endDate).toLocaleDateString('fr-FR');
-         previewPeriod.textContent = `${start} - ${end}`;
-       }
+       setTimeout(() => {
+         saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
+         saveButton.classList.remove('btn-primary');
+         saveButton.classList.add('btn-success');
+         
+         // Afficher la notification de succès
+         showSuccessNotification('Formation modifiée avec succès !');
+         
+         setTimeout(() => {
+           saveButton.innerHTML = originalText;
+           saveButton.classList.remove('btn-success');
+           saveButton.classList.add('btn-primary');
+           saveButton.disabled = false;
+           
+           // Rediriger vers la page des formations
+           window.location.href = 'formations.html';
+         }, 2000);
+       }, 1500);
      }
+
+                   function updatePreview() {
+        const title = document.getElementById('formationTitle').value;
+        const description = document.getElementById('formationDescription').value;
+        const level = document.getElementById('formationLevel').value;
+        
+        const previewTitle = document.querySelector('.card-body h5');
+        const previewDescription = document.querySelector('.card-body p');
+        const previewLevel = document.querySelector('.badge.bg-soft-info');
+        
+        if (previewTitle) previewTitle.textContent = title || 'Titre de la formation';
+        if (previewDescription) previewDescription.textContent = description || 'Description de la formation';
+        if (previewLevel) previewLevel.textContent = getLevelText(level);
+      }
 
     function getLevelText(level) {
       const levels = {
@@ -599,29 +586,173 @@
       return levels[level] || 'Niveau';
     }
 
+    // Variable globale pour le statut de la formation
+    let formationStatus = 'active'; // Par défaut actif
+
     function previewFormation() {
-      alert('Aperçu de la formation - Cette fonctionnalité ouvrira la formation dans un nouvel onglet');
+      // Ouvrir l'aperçu dans un nouvel onglet
+      const title = document.getElementById('formationTitle').value || 'Formation';
+      const description = document.getElementById('formationDescription').value || 'Description de la formation';
+      const level = getLevelText(document.getElementById('formationLevel').value);
+      
+      const previewContent = `
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Aperçu - ${title}</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        </head>
+        <body class="bg-light">
+          <div class="container py-5">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="card shadow">
+                  <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                      <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                           alt="${title}" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+                    </div>
+                    <h1 class="text-center mb-3">${title}</h1>
+                    <div class="text-center mb-4">
+                      <span class="badge bg-primary fs-6">${level}</span>
+                    </div>
+                    <p class="lead text-center mb-4">${description}</p>
+                    <div class="text-center">
+                      <button class="btn btn-primary btn-lg">S'inscrire à cette formation</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+      
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(previewContent);
+      newWindow.document.close();
     }
 
-    function duplicateFormation() {
-      if (confirm('Voulez-vous dupliquer cette formation ?')) {
-        alert('Formation dupliquée avec succès !');
-      }
-    }
+         function duplicateFormation() {
+       // Afficher la popup de confirmation pour dupliquer
+       const modalElement = document.getElementById('confirmToggleModal');
+       const modal = new bootstrap.Modal(modalElement);
+       
+       // Mettre à jour le contenu de la popup
+       document.getElementById('toggleModalTitle').innerHTML = '<i class="bi-files text-info me-2"></i>Confirmer la duplication';
+       document.getElementById('toggleModalBody').innerHTML = '<p class="mb-0">Voulez-vous dupliquer cette formation ?</p><p class="text-muted small mt-2">Une copie sera créée avec "(Copie)" ajouté au titre.</p>';
+       document.getElementById('confirmToggleBtn').innerHTML = '<i class="bi-check-circle me-1"></i>Oui, dupliquer';
+       document.getElementById('confirmToggleBtn').className = 'btn btn-info';
+       
+       // Gestionnaire pour le bouton de confirmation
+       document.getElementById('confirmToggleBtn').onclick = function() {
+         // Récupérer toutes les données du formulaire
+         const formData = new FormData(document.getElementById('formationEditForm'));
+         const data = Object.fromEntries(formData);
+         
+         // Créer une copie avec "(Copie)" ajouté au titre
+         const originalTitle = document.getElementById('formationTitle').value;
+         const newTitle = originalTitle + ' (Copie)';
+         
+         // Fermer la popup
+         modal.hide();
+         
+         // Afficher une notification de succès
+         showSuccessNotification(`Formation "${newTitle}" dupliquée avec succès !`);
+         
+         // Optionnel : rediriger vers la nouvelle formation
+         // window.location.href = 'formation-edit.html?id=new-formation-id';
+       };
+       
+       modal.show();
+     }
 
-    function archiveFormation() {
-      if (confirm('Voulez-vous archiver cette formation ?')) {
-        alert('Formation archivée avec succès !');
-        window.location.href = 'formations.html';
-      }
-    }
+         function toggleFormationStatus() {
+       const statusButton = document.querySelector('button[onclick="toggleFormationStatus()"]');
+       const statusText = document.getElementById('statusButtonText');
+       
+       if (formationStatus === 'active') {
+         // Afficher la popup de confirmation pour désactiver
+         const modalElement = document.getElementById('confirmToggleModal');
+         const modal = new bootstrap.Modal(modalElement);
+         
+         // Mettre à jour le contenu de la popup
+         document.getElementById('toggleModalTitle').innerHTML = '<i class="bi-exclamation-triangle text-warning me-2"></i>Confirmer la désactivation';
+         document.getElementById('toggleModalBody').innerHTML = '<p class="mb-0">Êtes-vous sûr de vouloir désactiver cette formation ?</p><p class="text-muted small mt-2">Cette action peut être annulée en réactivant la formation plus tard.</p>';
+         document.getElementById('confirmToggleBtn').innerHTML = '<i class="bi-check-circle me-1"></i>Oui, désactiver';
+         document.getElementById('confirmToggleBtn').className = 'btn btn-warning';
+         
+         // Gestionnaire pour le bouton de confirmation
+         document.getElementById('confirmToggleBtn').onclick = function() {
+           formationStatus = 'inactive';
+           statusButton.classList.remove('btn-outline-success');
+           statusButton.classList.add('btn-outline-warning');
+           statusText.textContent = 'Désactiver';
+           statusButton.querySelector('i').className = 'bi-toggle-off me-1';
+           
+           // Fermer la popup
+           modal.hide();
+           
+           // Afficher une notification de succès
+           showSuccessNotification('Formation désactivée avec succès !');
+         };
+         
+         modal.show();
+       } else {
+         // Afficher la popup de confirmation pour activer
+         const modalElement = document.getElementById('confirmToggleModal');
+         const modal = new bootstrap.Modal(modalElement);
+         
+         // Mettre à jour le contenu de la popup
+         document.getElementById('toggleModalTitle').innerHTML = '<i class="bi-check-circle text-success me-2"></i>Confirmer l\'activation';
+         document.getElementById('toggleModalBody').innerHTML = '<p class="mb-0">Êtes-vous sûr de vouloir activer cette formation ?</p><p class="text-muted small mt-2">La formation sera visible pour les apprenants.</p>';
+         document.getElementById('confirmToggleBtn').innerHTML = '<i class="bi-check-circle me-1"></i>Oui, activer';
+         document.getElementById('confirmToggleBtn').className = 'btn btn-success';
+         
+         // Gestionnaire pour le bouton de confirmation
+         document.getElementById('confirmToggleBtn').onclick = function() {
+           formationStatus = 'active';
+           statusButton.classList.remove('btn-outline-warning');
+           statusButton.classList.add('btn-outline-success');
+           statusText.textContent = 'Activer';
+           statusButton.querySelector('i').className = 'bi-toggle-on me-1';
+           
+           // Fermer la popup
+           modal.hide();
+           
+           // Afficher une notification de succès
+           showSuccessNotification('Formation activée avec succès !');
+         };
+         
+         modal.show();
+       }
+     }
+     
+     function showSuccessNotification(message) {
+       // Créer une notification de succès
+       const notification = document.createElement('div');
+       notification.className = 'alert alert-success alert-dismissible fade show position-fixed';
+       notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+       notification.innerHTML = `
+         <i class="bi-check-circle me-2"></i>${message}
+         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+       `;
+       
+       document.body.appendChild(notification);
+       
+       // Supprimer automatiquement après 3 secondes
+       setTimeout(() => {
+         if (notification.parentNode) {
+           notification.remove();
+         }
+       }, 3000);
+     }
 
-    function deleteFormation() {
-      if (confirm('Êtes-vous sûr de vouloir supprimer cette formation ? Cette action est irréversible.')) {
-        alert('Formation supprimée avec succès !');
-        window.location.href = 'formations.html';
-      }
-    }
+
   </script>
 </body>
 </html> 

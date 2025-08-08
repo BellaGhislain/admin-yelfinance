@@ -32,6 +32,77 @@
     #builderOffcanvas {
       display: none !important;
     }
+    
+    /* Empêcher le retour à la ligne sur les titres des cartes KPI */
+    .card-subtitle {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      margin-bottom: 0.75rem !important;
+      font-size: 0.875rem;
+    }
+    
+    /* Assurer que les cartes KPI gardent une largeur minimale */
+    .col-4 .card {
+      min-width: 0;
+    }
+    
+    /* Optimiser l'affichage du contenu des cartes */
+    .col-4 .card-body {
+      overflow: hidden;
+    }
+    
+    /* Disposition principale : valeur + icône sur la même ligne */
+    .col-4 .card .row.align-items-center {
+      align-items: center !important;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Valeur principale et icône alignés */
+    .col-4 .card .col {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .col-4 .card .col .row.align-items-center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
+    
+    /* Icône centrée */
+    .col-4 .card .col-auto {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    /* Valeur principale */
+    .col-4 .card .card-title {
+      margin-bottom: 0;
+      line-height: 1.2;
+      font-size: 1.75rem;
+    }
+    
+    /* Ligne pourcentage + augmentation */
+    .col-4 .card .badge {
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+      font-size: 0.75rem;
+    }
+    
+    /* Container pour les badges */
+    .col-4 .card .col .badge + .badge {
+      margin-left: 0;
+    }
+    
+    /* Assurer que les badges restent sur la même ligne */
+    .col-4 .card .col .row.align-items-center + .badge {
+      display: inline-block;
+    }
   </style>
 
   <style data-hs-appearance-onload-styles>
@@ -107,7 +178,7 @@
   }
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
 }
-  </script>
+            </script>
 </head>
 
 <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl footer-offset">
@@ -142,10 +213,10 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Mon profil</a>
                 <a class="dropdown-item" href="#">Paramètres</a>
-                <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Déconnexion</a>
-              </div>
-            </div>
+                  </div>
+                </div>
           </li>
         </ul>
       </div>
@@ -203,8 +274,8 @@
                 <span class="nav-link-title">Gestion des formateurs</span>
               </a>
             </div>
-          </div>
-        </div>
+            </div>
+            </div>
       </div>
     </div>
   </aside>
@@ -234,161 +305,108 @@
         </div>
         <!-- End Row -->
 
+        <!-- Filtres de recherche - Version collapsible -->
+        <div class="mb-3">
+          <!-- Bouton pour ouvrir/fermer les filtres -->
+          <div class="d-flex justify-content-end mb-2">
+            <button type="button" class="btn btn-outline-primary btn-sm" id="toggleFiltersBtn">
+              <i class="bi-funnel me-1"></i>
+              <span id="toggleFiltersText">Filtres</span>
+            </button>
+          </div>
+
+                    <!-- Panneau des filtres (caché par défaut) -->
+allons 
+          </div>
+
         <!-- KPIs -->
-        <div class="row">
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+        <div class="row flex-nowrap">
+          <div class="col-4 mb-3 mb-lg-5">
             <!-- Card -->
             <div class="card card-hover-shadow h-100">
               <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="card-subtitle mb-2">Effectifs total des apprenants</h6>
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <span class="card-title h2">2,847</span>
-                      </div>
-                      <div class="col-auto">
-                        <span class="badge bg-soft-success text-success">
-                          <i class="bi-graph-up"></i> 12.5%
-                        </span>
-                      </div>
-                    </div>
-                    <span class="badge bg-soft-primary text-primary">+284 ce mois</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
-                      <span class="avatar-initials">
-                        <i class="bi-people"></i>
-                      </span>
-                    </div>
-                  </div>
+                <h6 class="card-subtitle">Effectifs total des apprenants</h6>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="card-title h2 mb-0">2 847</span>
+                  <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
+                    <span class="avatar-initials">
+                      <i class="bi-people"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                  <span class="badge bg-soft-success text-success me-2">
+                    <i class="bi-graph-up"></i> 12.5%
+                  </span>
+                  <span class="badge bg-soft-primary text-primary">+284 ce mois</span>
                 </div>
               </div>
             </div>
             <!-- End Card -->
           </div>
-          <!-- End Col -->
+                                    <!-- End Col -->
 
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+          <div class="col-4 mb-3 mb-lg-5">
             <!-- Card -->
             <div class="card card-hover-shadow h-100">
               <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="card-subtitle mb-2">Montant total des ventes</h6>
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <span class="card-title h2">12.5M</span>
-                      </div>
-                      <div class="col-auto">
-                        <span class="badge bg-soft-success text-success">
-                          <i class="bi-graph-up"></i> 8.2%
-                        </span>
-                      </div>
-                    </div>
-                    <span class="badge bg-soft-primary text-primary">+1.2M ce mois</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="avatar avatar-sm avatar-soft-success avatar-circle">
-                      <span class="avatar-initials">
-                        <i class="bi-currency-exchange"></i>
-                      </span>
-                    </div>
-                  </div>
+                <h6 class="card-subtitle">Montant total des ventes</h6>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="card-title h2 mb-0">12,5M</span>
+                  <div class="avatar avatar-sm avatar-soft-success avatar-circle">
+                    <span class="avatar-initials">
+                      <i class="bi-currency-exchange"></i>
+              </span>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                  <span class="badge bg-soft-success text-success me-2">
+                    <i class="bi-graph-up"></i> 8.2%
+                  </span>
+                  <span class="badge bg-soft-primary text-primary">+1,2M ce mois</span>
                 </div>
               </div>
             </div>
             <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-            <!-- Card -->
-            <div class="card card-hover-shadow h-100">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="card-subtitle mb-2">Nombres de sessions en cours</h6>
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <span class="card-title h2">1654</span>
-                      </div>
-                      <div class="col-auto">
-                        <span class="badge bg-soft-success text-success">
-                          <i class="bi-graph-up"></i> 2.1%
-                        </span>
-                      </div>
-                    </div>
-                    <span class="badge bg-soft-primary text-primary">+1.8% ce mois</span>
-                  </div>
-                  <div class="col-auto">
-                    <div class="avatar avatar-sm avatar-soft-warning avatar-circle">
-                      <span class="avatar-initials">
-                        <i class="bi-trophy"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-            <!-- Card -->
-            <div class="card card-hover-shadow h-100">
-              <div class="card-body">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h6 class="card-subtitle mb-2">Filtre par formation</h6>
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <select class="form-select form-select-sm" id="formationFilter">
-                          <option value="all" selected>Toutes les formations</option>
-                          <option value="web-dev">Développement Web Full-Stack</option>
-                          <option value="data-science">Data Science</option>
-                          <option value="design">Design UX/UI</option>
-                          <option value="mobile">Développement Mobile</option>
-                          <option value="marketing">Marketing Digital</option>
-                        </select>
-                      </div>
-                    </div>
-                    <small class="text-muted">Voir les sessions de cette formation</small>
-                  </div>
-
-                </div>
-              </div>
-              
-              <!-- Filtre des sessions (apparaît quand une formation est sélectionnée) -->
-              <div id="sessionFilterContainer" style="display: none;">
-                <hr class="my-3">
-                <h6 class="card-subtitle mb-2">Sessions disponibles</h6>
-                <div class="row align-items-center">
-                  <div class="col">
-                    <select class="form-select form-select-sm" id="sessionFilter">
-                      <option value="all-sessions">Toutes les sessions</option>
-                    </select>
-                  </div>
-                </div>
-                <small class="text-muted">Sélectionner une session spécifique</small>
-              </div>
-            </div>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
         </div>
+        <!-- End Col -->
+
+          <div class="col-4 mb-3 mb-lg-5">
+            <!-- Card -->
+            <div class="card card-hover-shadow h-100">
+              <div class="card-body">
+                <h6 class="card-subtitle">Nombres de sessions en cours</h6>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="card-title h2 mb-0">1 654</span>
+                  <div class="avatar avatar-sm avatar-soft-warning avatar-circle">
+                    <span class="avatar-initials">
+                      <i class="bi-trophy"></i>
+                    </span>
+      </div>
+    </div>
+                                      <div class="d-flex align-items-center">
+                  <span class="badge bg-soft-success text-success me-2">
+                    <i class="bi-graph-up"></i> 2.1%
+        </span>
+                  <span class="badge bg-soft-primary text-primary">+1.8% ce mois</span>
+          </div>
+        </div>
+          </div>
+            <!-- End Card -->
+        </div>
+        <!-- End Col -->
+          </div>
         <!-- End KPIs -->
 
         <!-- Graphiques -->
-        <div class="row">
+                                  <div class="row">
           <!-- Inscriptions par mois -->
           <div class="col-lg-8 mb-3 mb-lg-5">
             <!-- Card -->
             <div class="card card-hover-shadow h-100">
-              <!-- Header -->
-              <div class="card-header">
-                <h4 class="card-header-title">Participants par session</h4>
+                        <!-- Header -->
+                        <div class="card-header">
+                <h4 class="card-header-title">Evolution par formation</h4>
                 <div class="card-header-actions">
                   <select class="form-select form-select-sm" id="chartFormationFilter">
                     <option value="all">Toutes les formations</option>
@@ -398,59 +416,59 @@
                     <option value="mobile">Développement Mobile</option>
                     <option value="marketing">Marketing Digital</option>
                   </select>
-                </div>
-              </div>
-              <!-- End Header -->
+                            </div>
+                        </div>
+                        <!-- End Header -->
 
-              <!-- Body -->
+                        <!-- Body -->
               <div class="card-body">
                 <div class="chart-container" style="position: relative; height:300px;">
                   <canvas id="inscriptionsChart"></canvas>
-                </div>
-              </div>
-              <!-- End Body -->
-            </div>
+                                        </div>
+                                      </div>
+                        <!-- End Body -->
+                                    </div>
             <!-- End Card -->
-          </div>
-          <!-- End Col -->
+                                    </div>
+                                    <!-- End Col -->
 
           <!-- Répartition par catégorie -->
           <div class="col-lg-4 mb-3 mb-lg-5">
             <!-- Card -->
             <div class="card card-hover-shadow h-100">
-              <!-- Header -->
-              <div class="card-header">
-                <h4 class="card-header-title">Répartition par Chiffre d'Affaires</h4>
-              </div>
-              <!-- End Header -->
+                        <!-- Header -->
+                        <div class="card-header">
+                <h4 class="card-header-title">Repartition du chiffre d'affaires par formation</h4>
+                        </div>
+                        <!-- End Header -->
 
-              <!-- Body -->
+                        <!-- Body -->
               <div class="card-body">
                 <div class="chart-container" style="position: relative; height:300px;">
                   <canvas id="categoriesChart"></canvas>
-                </div>
-              </div>
-              <!-- End Body -->
-            </div>
+                              </div>
+                        </div>
+                        <!-- End Body -->
+                      </div>
             <!-- End Card -->
-          </div>
-          <!-- End Col -->
-        </div>
+                                      </div>
+                                      <!-- End Col -->
+                                      </div>
         <!-- End Graphiques -->
 
         <!-- Tableaux de données -->
-        <div class="row">
+                                    <div class="row">
           <!-- Formations populaires -->
-          <div class="col-lg-6 mb-3 mb-lg-5">
+          <div class="col-12 mb-3 mb-lg-5">
             <!-- Card -->
             <div class="card card-hover-shadow h-100">
-              <!-- Header -->
-              <div class="card-header">
+                          <!-- Header -->
+                          <div class="card-header">
                 <h4 class="card-header-title">Formations les Plus Populaires</h4>
-              </div>
-              <!-- End Header -->
+                          </div>
+                          <!-- End Header -->
 
-              <!-- Body -->
+                          <!-- Body -->
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle">
@@ -465,15 +483,15 @@
                     <tbody>
                       <tr>
                         <td>
-                          <div class="d-flex align-items-center">
+                              <div class="d-flex align-items-center">
                             <div class="avatar avatar-sm avatar-circle me-3">
                               <img class="avatar-img" src="assets/img/400x400/img1.jpg" alt="Image Description">
-                            </div>
+                                </div>
                             <div>
                               <h6 class="mb-0">Développement Web Full-Stack</h6>
                               <small class="text-body">React & Node.js</small>
-                            </div>
-                          </div>
+                                </div>
+                              </div>
                         </td>
                         <td><span class="badge bg-soft-primary text-primary">2,450</span></td>
                         <td>2.2M F CFA</td>
@@ -481,15 +499,15 @@
                       </tr>
                       <tr>
                         <td>
-                          <div class="d-flex align-items-center">
+                              <div class="d-flex align-items-center">
                             <div class="avatar avatar-sm avatar-circle me-3">
                               <img class="avatar-img" src="assets/img/400x400/img2.jpg" alt="Image Description">
-                            </div>
+                                </div>
                             <div>
                               <h6 class="mb-0">Data Science</h6>
                               <small class="text-body">Python & ML</small>
-                            </div>
-                          </div>
+                                </div>
+                              </div>
                         </td>
                         <td><span class="badge bg-soft-primary text-primary">1,890</span></td>
                         <td>1.8M F CFA</td>
@@ -497,15 +515,15 @@
                       </tr>
                       <tr>
                         <td>
-                          <div class="d-flex align-items-center">
+                              <div class="d-flex align-items-center">
                             <div class="avatar avatar-sm avatar-circle me-3">
                               <img class="avatar-img" src="assets/img/400x400/img3.jpg" alt="Image Description">
-                            </div>
+                                </div>
                             <div>
                               <h6 class="mb-0">Design UX/UI</h6>
                               <small class="text-body">Figma & Adobe</small>
-                            </div>
-                          </div>
+                                </div>
+                              </div>
                         </td>
                         <td><span class="badge bg-soft-primary text-primary">1,234</span></td>
                         <td>1.1M F CFA</td>
@@ -513,20 +531,20 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>
-              </div>
-              <!-- End Body -->
-            </div>
+                                </div>
+                          </div>
+                          <!-- End Body -->
+                        </div>
             <!-- End Card -->
-          </div>
+                      </div>
           <!-- End Col -->
 
 
-        </div>
+                      </div>
         <!-- End Tableaux -->
-      </div>
+                    </div>
       <!-- End Content -->
-    </div>
+                        </div>
     <!-- End Content -->
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
@@ -536,21 +554,21 @@
     <div class="row justify-content-between align-items-center">
       <div class="col">
         <p class="fs-6 mb-0">&copy; 2024 YEL'S FINANCES. Tous droits réservés. | Développé par MN electronics</p>
-      </div>
+                            </div>
       <div class="col-auto">
         <div class="d-flex justify-content-end">
           <ul class="list-inline list-separator">
             <li class="list-inline-item">
               <a class="list-separator-link" href="#">FAQ</a>
-            </li>
+                  </li>
             <li class="list-inline-item">
               <a class="list-separator-link" href="#">License</a>
-            </li>
-          </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
   <!-- JS Implementing Plugins -->
   <script src="assets/js/vendor.min.js"></script>
@@ -780,14 +798,60 @@
       const formationFilter = document.getElementById('formationFilter');
       const sessionFilter = document.getElementById('sessionFilter');
       const chartFormationFilter = document.getElementById('chartFormationFilter');
+      const dateFilterContainer = document.getElementById('dateFilterContainer');
+      const searchButton = document.getElementById('searchButton');
+      
+      // Gestion du panneau collapsible
+      const toggleFiltersBtn = document.getElementById('toggleFiltersBtn');
+      const filtersPanel = document.getElementById('filtersPanel');
+      const toggleFiltersText = document.getElementById('toggleFiltersText');
+      
+      if (toggleFiltersBtn && filtersPanel) {
+        toggleFiltersBtn.addEventListener('click', function() {
+          if (filtersPanel.style.display === 'none') {
+            filtersPanel.style.display = 'block';
+            toggleFiltersText.textContent = 'Filtres';
+            toggleFiltersBtn.classList.remove('btn-outline-primary');
+            toggleFiltersBtn.classList.add('btn-primary');
+          } else {
+            filtersPanel.style.display = 'none';
+            toggleFiltersText.textContent = 'Filtres';
+            toggleFiltersBtn.classList.remove('btn-primary');
+            toggleFiltersBtn.classList.add('btn-outline-primary');
+          }
+        });
+      }
       
       // Initialiser le graphique avec les données globales
       updateChart('all');
       
       if (formationFilter) {
         formationFilter.addEventListener('change', function() {
-          updateSessionOptions(this.value);
-          updateDashboardData(this.value);
+          const selectedFormation = this.value;
+          
+          if (selectedFormation === 'all') {
+            document.getElementById('sessionFilterContainer').style.display = 'none';
+            updateDashboardData('all');
+          } else {
+            document.getElementById('sessionFilterContainer').style.display = 'none';
+          }
+        });
+      }
+      
+      if (searchButton) {
+        searchButton.addEventListener('click', function() {
+          const selectedFormation = document.getElementById('formationFilter').value;
+          const startDate = document.getElementById('startDateFilter').value;
+          const endDate = document.getElementById('endDateFilter').value;
+          
+          if (selectedFormation !== 'all' && startDate && endDate) {
+            // Afficher le filtre des sessions après la recherche
+            updateSessionOptions(selectedFormation);
+            document.getElementById('sessionFilterContainer').style.display = 'block';
+            
+            // Mettre à jour les données avec les filtres de date
+            updateDashboardData(selectedFormation);
+          }
         });
       }
       
@@ -813,7 +877,7 @@
       new Chart(categoriesCtx, {
         type: 'doughnut',
         data: {
-          labels: ['Développement Web Full-Stack', 'Data Science', 'Design UX/UI', 'Développement Mobile', 'Marketing Digital'],
+          labels: ['Web Full-Stack', 'Data Science', 'Design UX/UI', 'Mobile', 'Marketing'],
           datasets: [{
             data: [35, 25, 20, 15, 5],
             backgroundColor: [
@@ -834,13 +898,36 @@
               position: 'bottom',
               labels: {
                 usePointStyle: true,
-                padding: 20
+                padding: 15,
+                font: {
+                  size: 12
+                },
+                generateLabels: function(chart) {
+                  const data = chart.data;
+                  if (data.labels.length && data.datasets.length) {
+                    return data.labels.map(function(label, i) {
+                      const dataset = data.datasets[0];
+                      const backgroundColor = dataset.backgroundColor[i];
+                      
+                      return {
+                        text: label,
+                        fillStyle: backgroundColor,
+                        strokeStyle: backgroundColor,
+                        lineWidth: 0,
+                        pointStyle: 'circle',
+                        hidden: false,
+                        index: i
+                      };
+                    });
+                  }
+                  return [];
+                }
               }
             }
           }
         }
       });
     }
-  </script>
+    </script>
 </body>
 </html>

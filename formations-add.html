@@ -51,6 +51,165 @@
     .form-label[for="shortDescriptionLabel"] {
       padding-left: 15px;
     }
+    
+    /* Améliorations pour le champ Présentation */
+    #presentationLabel {
+      transition: all 0.3s ease;
+      border: 1px solid #d1d7e0;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    #presentationLabel:focus {
+      border-color: #377dff;
+      box-shadow: 0 0 0 0.2rem rgba(55, 125, 255, 0.25);
+      outline: none;
+    }
+    
+    #presentationLabel::placeholder {
+      color: #6c757d;
+      font-style: italic;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #presentationLabel {
+        min-height: 150px;
+        font-size: 16px; /* Évite le zoom sur iOS */
+      }
+      
+      .form-text {
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      #presentationLabel {
+        min-height: 200px;
+      }
+    }
+    
+    /* Amélioration du tooltip */
+    .form-label .bi-question-circle {
+      color: #6c757d;
+      cursor: help;
+      transition: color 0.2s ease;
+    }
+    
+    .form-label .bi-question-circle:hover {
+      color: #377dff;
+    }
+    
+    /* Style pour le texte d'aide */
+    .form-text {
+      color: #6c757d;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    
+    .form-text .bi-info-circle {
+      color: #377dff;
+    }
+    
+    /* Améliorations générales du formulaire */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    
+    .form-label {
+      margin-bottom: 0.5rem;
+      color: #495057;
+      font-weight: 500;
+    }
+    
+    .form-control, .form-select {
+      border-radius: 0.5rem;
+      border: 1px solid #d1d7e0;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: #377dff;
+      box-shadow: 0 0 0 0.2rem rgba(55, 125, 255, 0.25);
+    }
+    
+    .form-control-lg {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+    
+    /* Amélioration des sections */
+    .row.mb-5 {
+      margin-bottom: 3rem !important;
+    }
+    
+    .row.mb-5:last-child {
+      margin-bottom: 2rem !important;
+    }
+    
+    /* Amélioration des cartes */
+    .card {
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .card-header {
+      border-bottom: 1px solid #e9ecef;
+      background-color: #f8f9fa;
+      border-radius: 0.75rem 0.75rem 0 0 !important;
+    }
+    
+    .card-header.bg-light {
+      background-color: #f8f9fa !important;
+    }
+    
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+      .card-body {
+        padding: 1.5rem !important;
+      }
+      
+      .row.g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+      }
+      
+      .form-control-lg {
+        font-size: 16px;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .card-body.p-4.p-lg-5 {
+        padding: 3rem !important;
+      }
+    }
+    
+    /* Amélioration des boutons */
+    .btn-outline-primary {
+      border-color: #377dff;
+      color: #377dff;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: #377dff;
+      border-color: #377dff;
+    }
+    
+    /* Amélioration des icônes */
+    .text-primary {
+      color: #377dff !important;
+    }
+    
+    .bi-question-circle {
+      font-size: 0.875rem;
+    }
   </style>
 
   <style data-hs-appearance-onload-styles>
@@ -186,153 +345,7 @@
 
         <!-- End Navbar Vertical Toggle -->
 
-        <!-- Search Form -->
-        <div class="dropdown ms-2">
-          <!-- Input Group -->
-          <div class="d-none d-lg-block">
-            <div class="input-group input-group-merge input-group-borderless input-group-hover-light navbar-input-group">
-              <div class="input-group-prepend input-group-text">
-                <i class="bi-search"></i>
-              </div>
 
-                              <input type="search" class="js-form-search form-control" placeholder="Rechercher des formations" aria-label="Rechercher des formations" data-hs-form-search-options='{
-                       "clearIcon": "#clearSearchResultsIcon",
-                       "dropMenuElement": "#searchDropdownMenu",
-                       "dropMenuOffset": 20,
-                       "toggleIconOnFocus": true,
-                       "activeClass": "focus"
-                     }'>
-              <a class="input-group-append input-group-text" href="javascript:;">
-                <i id="clearSearchResultsIcon" class="bi-x-lg" style="display: none;"></i>
-              </a>
-            </div>
-          </div>
-
-          <button class="js-form-search js-form-search-mobile-toggle btn btn-ghost-secondary btn-icon rounded-circle d-lg-none" type="button" data-hs-form-search-options='{
-                       "clearIcon": "#clearSearchResultsIcon",
-                       "dropMenuElement": "#searchDropdownMenu",
-                       "dropMenuOffset": 20,
-                       "toggleIconOnFocus": true,
-                       "activeClass": "focus"
-                     }'>
-            <i class="bi-search"></i>
-          </button>
-          <!-- End Input Group -->
-
-          <!-- Card Search Content -->
-          <div id="searchDropdownMenu" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless">
-            <div class="card">
-              <!-- Body -->
-              <div class="card-body-height">
-                <div class="d-lg-none">
-                  <div class="input-group input-group-merge navbar-input-group mb-5">
-                    <div class="input-group-prepend input-group-text">
-                      <i class="bi-search"></i>
-                    </div>
-
-                    <input type="search" class="form-control" placeholder="Search in front" aria-label="Search in front">
-                    <a class="input-group-append input-group-text" href="javascript:;">
-                      <i class="bi-x-lg"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <span class="dropdown-header">Recent searches</span>
-
-                <div class="dropdown-item bg-transparent text-wrap">
-                  <a class="btn btn-soft-dark btn-xs rounded-pill" href="index.html">
-                    Gulp <i class="bi-search ms-1"></i>
-                  </a>
-                  <a class="btn btn-soft-dark btn-xs rounded-pill" href="index.html">
-                    Notification panel <i class="bi-search ms-1"></i>
-                  </a>
-                </div>
-
-                <div class="dropdown-divider"></div>
-
-                <span class="dropdown-header">Tutorials</span>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <span class="icon icon-soft-dark icon-xs icon-circle">
-                        <i class="bi-sliders"></i>
-                      </span>
-                    </div>
-
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>How to set up Gulp?</span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <span class="icon icon-soft-dark icon-xs icon-circle">
-                        <i class="bi-paint-bucket"></i>
-                      </span>
-                    </div>
-
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>How to change theme color?</span>
-                    </div>
-                  </div>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <span class="dropdown-header">Members</span>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>Amanda Harvey <i class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"></i></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>David Harrison</span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <div class="avatar avatar-xs avatar-soft-info avatar-circle">
-                        <span class="avatar-initials">A</span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>Anne Richard</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- End Body -->
-
-              <!-- Footer -->
-              <a class="card-footer text-center" href="index.html">
-                See all results <i class="bi-chevron-right small"></i>
-              </a>
-              <!-- End Footer -->
-            </div>
-          </div>
-          <!-- End Card Search Content -->
-
-        </div>
-
-        <!-- End Search Form -->
       </div>
 
       <div class="navbar-nav-wrap-content-end">
@@ -580,303 +593,144 @@
       </div>
       <!-- End Page Header -->
 
-      <div class="row justify-content-center">
-        <div class="col-lg-10 mb-3 mb-lg-0">
-          <!-- Card -->
-          <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
-            <div class="card-header">
-              <h4 class="card-header-title">Informations de la formation</h4>
-            </div>
-            <!-- End Header -->
+<form id="formationAddForm">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 mb-3 mb-lg-0">
+      <!-- Card -->
+      <div class="card mb-3 mb-lg-5 mb-4">
+        <!-- Header -->
+        <div class="card-header">
+          <h4 class="card-header-title">Informations de la formation</h4>
+        </div>
+        <!-- End Header -->
 
-            <!-- Body -->
-            <div class="card-body">
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="formationNameLabel" class="form-label">Nom (titre) de la formation <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Le titre principal de votre formation."></i></label>
+        <!-- Body -->
+        <div class="card-body px-4 py-4">
+          <!-- Form -->
+          <div class="mb-4">
+            <label for="formationNameLabel" class="form-label">Nom (titre) de la formation <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Le titre principal de votre formation."></i></label>
+            <input type="text" class="form-control" name="formationName" id="formationNameLabel" placeholder="Ex: Formation en Développement Web" required>
+          </div>
+          <!-- End Form -->
 
-                <input type="text" class="form-control" name="formationName" id="formationNameLabel" placeholder="Ex: Formation en Développement Web" required>
-              </div>
-              <!-- End Form -->
+          <!-- Form -->
+          <div class="mb-4">
+            <label for="levelsLabel" class="form-label">Niveaux</label>
+            <select class="form-select" name="levels" id="levelsLabel" required>
+              <option value="">Sélectionner le niveau</option>
+              <option value="debutant">Débutant</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="avance">Avancé</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+          <!-- End Form -->
 
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="levelsLabel" class="form-label">Niveaux</label>
-
-                <select class="form-select" name="levels" id="levelsLabel" required>
-                  <option value="">Sélectionner le niveau</option>
-                  <option value="debutant">Débutant</option>
-                  <option value="intermediaire">Intermédiaire</option>
-                  <option value="avance">Avancé</option>
-                  <option value="expert">Expert</option>
-                </select>
-              </div>
-              <!-- End Form -->
-
-              <div class="row">
-                <div class="mb-4">
-                  <label class="form-label">Formateurs</label>
-                  
-                  <div id="instructorsContainer">
-                    <!-- Formateur 1 -->
-                    <div class="mb-3 instructor-item">
-                      <div class="input-group">
-                        <select class="form-select" name="instructor[]" required>
-                          <option value="">Sélectionner un formateur</option>
-                          <option value="marie-dubois">Marie Dubois - marie.dubois@formation.com</option>
-                          <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
-                          <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
-                          <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
-                        </select>
-                        <button type="button" class="btn btn-outline-danger remove-instructor-item" style="display: none;">
-                          <i class="bi-trash"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <button type="button" class="btn btn-outline-primary btn-sm" id="addInstructorItem">
-                    <i class="bi-plus-circle me-1"></i> Ajouter un formateur
-                  </button>
-                </div>
-                <!-- End Form -->
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="presentationLabel" class="form-label">Présentation de la formation</label>
-                <textarea class="form-control" name="presentation" id="presentationLabel" rows="6" placeholder="Décrivez en détail le contenu de la formation, les objectifs, les prérequis, etc..."></textarea>
-              </div>
-              <!-- End Form -->
-
-              <label class="form-label">Compétences que les apprenants vont acquérir</label>
-
-              <!-- Skills Items Container -->
-              <div id="skillsItemsContainer">
-                <!-- Skill Item 1 -->
-                <div class="mb-3 skill-item">
+          <div class="row">
+            <div class="mb-4">
+              <label class="form-label">Formateurs</label>
+              <div id="instructorsContainer">
+                <!-- Formateur 1 -->
+                <div class="mb-3 instructor-item">
                   <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Maîtriser les langages HTML, CSS et JavaScript" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item" style="display: none;">
-                      <i class="bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Skill Item 2 -->
-                <div class="mb-3 skill-item">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Développer des applications web responsives" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item">
-                      <i class="bi-trash"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Skill Item 3 -->
-                <div class="mb-3 skill-item">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Utiliser les frameworks modernes (React, Vue.js)" required>
-                    <button type="button" class="btn btn-outline-danger remove-skill-item">
+                    <select class="form-select" name="instructor[]" required>
+                      <option value="">Sélectionner un formateur</option>
+                      <option value="marie-dubois">Marie Dubois - marie.dubois@formation.com</option>
+                      <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
+                      <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
+                      <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
+                    </select>
+                    <button type="button" class="btn btn-outline-danger remove-instructor-item" style="display: none;">
                       <i class="bi-trash"></i>
                     </button>
                   </div>
                 </div>
               </div>
-
-              <!-- Add More Button -->
-              <button type="button" class="btn btn-outline-primary btn-sm" id="addSkillItem">
-                <i class="bi-plus-circle me-1"></i> Ajouter une compétence
+              <button type="button" class="btn btn-outline-primary btn-sm" id="addInstructorItem">
+                <i class="bi-plus-circle me-1"></i> Ajouter un formateur
               </button>
-
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  // Gestion des compétences
-                  const skillsContainer = document.getElementById('skillsItemsContainer');
-                  const addSkillButton = document.getElementById('addSkillItem');
-
-                  addSkillButton.addEventListener('click', function() {
-                    const newItem = document.createElement('div');
-                    newItem.className = 'mb-3 skill-item';
-                    newItem.innerHTML = `
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Gérer les bases de données" required>
-                        <button type="button" class="btn btn-outline-danger remove-skill-item">
-                          <i class="bi-trash"></i>
-                        </button>
-                      </div>
-                    `;
-                    skillsContainer.appendChild(newItem);
-                    updateSkillRemoveButtons();
-                  });
-
-                  skillsContainer.addEventListener('click', function(e) {
-                    if (e.target.closest('.remove-skill-item')) {
-                      e.target.closest('.skill-item').remove();
-                      updateSkillRemoveButtons();
-                    }
-                  });
-
-                  function updateSkillRemoveButtons() {
-                    const items = skillsContainer.querySelectorAll('.skill-item');
-                    const removeButtons = skillsContainer.querySelectorAll('.remove-skill-item');
-                    
-                    if (items.length === 1) {
-                      removeButtons[0].style.display = 'none';
-                    } else {
-                      removeButtons.forEach(btn => btn.style.display = 'block');
-                    }
-                  }
-
-                  updateSkillRemoveButtons();
-
-                  // Gestion des formateurs
-                  const instructorsContainer = document.getElementById('instructorsContainer');
-                  const addInstructorButton = document.getElementById('addInstructorItem');
-
-                  addInstructorButton.addEventListener('click', function() {
-                    const newItem = document.createElement('div');
-                    newItem.className = 'mb-3 instructor-item';
-                    newItem.innerHTML = `
-                      <div class="input-group">
-                        <select class="form-select" name="instructor[]" required>
-                          <option value="">Sélectionner un formateur</option>
-                          <option value="marie-dubois">Marie Dubois - marie.dubois@formation.com</option>
-                          <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
-                          <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
-                          <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
-                        </select>
-                        <button type="button" class="btn btn-outline-danger remove-instructor-item">
-                          <i class="bi-trash"></i>
-                        </button>
-                      </div>
-                    `;
-                    instructorsContainer.appendChild(newItem);
-                    updateInstructorRemoveButtons();
-                  });
-
-                  instructorsContainer.addEventListener('click', function(e) {
-                    if (e.target.closest('.remove-instructor-item')) {
-                      e.target.closest('.instructor-item').remove();
-                      updateInstructorRemoveButtons();
-                    }
-                  });
-
-                  function updateInstructorRemoveButtons() {
-                    const items = instructorsContainer.querySelectorAll('.instructor-item');
-                    const removeButtons = instructorsContainer.querySelectorAll('.remove-instructor-item');
-                    
-                    if (items.length === 1) {
-                      removeButtons[0].style.display = 'none';
-                    } else {
-                      removeButtons.forEach(btn => btn.style.display = 'block');
-                    }
-                  }
-
-                  updateInstructorRemoveButtons();
-                });
-              </script>
             </div>
-            <!-- Body -->
           </div>
-          <!-- End Card -->
 
-          <!-- Card -->
-          <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
-            <div class="card-header card-header-content-between">
-              <h4 class="card-header-title">Médias</h4>
-
-              <!-- Dropdown -->
-              <div class="dropdown">
-                <a class="btn btn-ghost-secondary btn-sm" href="#!" id="mediaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ajouter des médias <i class="bi-chevron-down"></i>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end mt-1">
-                  <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#addImageFromURLModal">
-                    <i class="bi-link dropdown-item-icon"></i> Ajouter une image depuis une URL
-                  </a>
-                  <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#embedVideoModal">
-                    <i class="bi-youtube dropdown-item-icon"></i> Intégrer une vidéo
-                  </a>
-                </div>
-              </div>
-              <!-- End Dropdown -->
-            </div>
-            <!-- End Header -->
-
-            <!-- Body -->
-            <div class="card-body">
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="youtubeLinkLabel" class="form-label">Lien de la vidéo YouTube</label>
-                <input type="url" class="form-control" name="youtubeLink" id="youtubeLinkLabel" placeholder="https://www.youtube.com/watch?v=..." aria-label="Lien YouTube de description">
-                <span class="form-text">Mettez le lien de la vidéo expliquant la formation.</span>
-              </div>
-              <!-- End Form -->
-
-              <!-- Form -->
-              <div class="mb-4">
-                <label for="photoLabel" class="form-label">Photo de la formation</label>
-                <input type="file" class="form-control" name="photo" id="photoLabel" accept="image/*" aria-label="Photo de la formation">
-                <span class="form-text">Téléchargez une image représentative de la formation (JPG, PNG, GIF).</span>
-              </div>
-              <!-- End Form -->
-
-              <!-- Dropzone -->
-              <div id="attachFilesNewProjectLabel" class="js-dropzone dz-dropzone dz-dropzone-card">
-                <div class="dz-message">
-                  <img class="avatar avatar-xl avatar-4x3 mb-3" src="assets/svg/illustrations/oc-browse.svg" alt="Description de l'image" data-hs-theme-appearance="default">
-                  <img class="avatar avatar-xl avatar-4x3 mb-3" src="assets/svg/illustrations-light/oc-browse.svg" alt="Description de l'image" data-hs-theme-appearance="dark">
-
-                  <h5>Glissez et déposez votre fichier ici</h5>
-
-                  <p class="mb-2">ou</p>
-
-                  <span class="btn btn-white btn-sm">Parcourir les fichiers</span>
-                </div>
-              </div>
-              <!-- End Dropzone -->
-            </div>
-            <!-- Body -->
+          <!-- Form -->
+          <div class="mb-4">
+            <label for="presentationLabel" class="form-label">Présentation de la formation</label>
+            <textarea class="form-control" name="presentation" id="presentationLabel" rows="6" placeholder="Décrivez en détail le contenu de la formation, les objectifs, les prérequis, etc..."></textarea>
           </div>
-          <!-- End Card -->
+          <!-- End Form -->
 
+          <label class="form-label">Compétences que les apprenants vont acquérir</label>
+          <!-- Skills Items Container -->
+          <div id="skillsItemsContainer">
+            <!-- Skill Item 1 -->
+            <div class="mb-3 skill-item">
+              <div class="input-group">
+                <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Maîtriser les langages HTML, CSS et JavaScript" required>
+                <button type="button" class="btn btn-outline-danger remove-skill-item" style="display: none;">
+                  <i class="bi-trash"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Skill Item 2 -->
+            <div class="mb-3 skill-item">
+              <div class="input-group">
+                <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Développer des applications web responsives" required>
+                <button type="button" class="btn btn-outline-danger remove-skill-item">
+                  <i class="bi-trash"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Skill Item 3 -->
+            <div class="mb-3 skill-item">
+              <div class="input-group">
+                <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Utiliser les frameworks modernes (React, Vue.js)" required>
+                <button type="button" class="btn btn-outline-danger remove-skill-item">
+                  <i class="bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+                     <button type="button" class="btn btn-outline-primary btn-sm" id="addSkillItem">
+             <i class="bi-plus-circle me-1"></i> Ajouter une compétence
+           </button>
+           <!-- End Skills Items Container -->
 
+           <!-- Médias -->
+           <div class="mb-4 mt-4">
+            <label for="youtubeLinkLabel" class="form-label">Lien de la vidéo YouTube</label>
+            <input type="url" class="form-control" name="youtubeLink" id="youtubeLinkLabel" placeholder="https://www.youtube.com/watch?v=..." aria-label="Lien YouTube de description">
+            <span class="form-text">Mettez le lien de la vidéo expliquant la formation.</span>
+          </div>
+          <div class="mb-4">
+            <label for="photoLabel" class="form-label">Photo de la formation</label>
+            <input type="file" class="form-control" name="photo" id="photoLabel" accept="image/*" aria-label="Photo de la formation">
+            <span class="form-text">Téléchargez une image représentative de la formation (JPG, PNG, GIF).</span>
+          </div>
+          <!-- End Médias -->
+
+          <!-- Boutons d'action -->
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <button type="button" class="btn btn-white" onclick="window.location.href='formations.html'">
+              Annuler
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="bi-check-circle me-1"></i>
+              Créer la formation
+            </button>
+          </div>
+          <!-- End Boutons d'action -->
         </div>
-        <!-- End Col -->
-        <!-- End Col -->
+        <!-- End Body -->
       </div>
-      <!-- End Row -->
+      <!-- End Card -->
+    </div>
+    <!-- End Col -->
+  </div>
+  <!-- End Row -->
+</form>
 
-      <div class="position-fixed start-50 bottom-0 translate-middle-x w-100 zi-99 mb-3" style="max-width: 40rem;">
-        <!-- Card -->
-        <div class="card card-sm bg-dark border-dark mx-2">
-          <div class="card-body">
-            <div class="row justify-content-center justify-content-sm-between">
-              <div class="col">
-                <button type="button" class="btn btn-ghost-danger">Supprimer</button>
-              </div>
-              <!-- End Col -->
 
-              <div class="col-auto">
-                <div class="d-flex gap-3">
-                  <button type="button" class="btn btn-ghost-light">Annuler</button>
-                  <button type="button" class="btn btn-primary">Créer la formation</button>
-                </div>
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-        </div>
-        <!-- End Card -->
-      </div>
+
     </div>
     <!-- End Content -->
 
@@ -1078,6 +932,182 @@
   <!-- End Builder -->
 
   <div class="d-none js-build-layouts">
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor.min.js"></script>
+  <script src="assets/js/theme.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Gestion du formulaire
+      const form = document.getElementById('formationAddForm');
+      
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Validation basique
+          const title = document.getElementById('formationNameLabel').value;
+          const level = document.getElementById('levelsLabel').value;
+          
+          // Validation des formateurs
+          const instructorSelects = document.querySelectorAll('select[name="instructor[]"]');
+          let hasValidInstructor = false;
+          instructorSelects.forEach(select => {
+            if (select.value) hasValidInstructor = true;
+          });
+          
+          if (!title || !level || !hasValidInstructor) {
+            alert('Veuillez remplir tous les champs obligatoires.');
+            return;
+          }
+          
+          createFormation();
+        });
+      }
+
+      // Gestion des compétences
+      const skillsContainer = document.getElementById('skillsItemsContainer');
+      const addSkillButton = document.getElementById('addSkillItem');
+
+      if (addSkillButton) {
+        addSkillButton.addEventListener('click', function() {
+          const newItem = document.createElement('div');
+          newItem.className = 'mb-3 skill-item';
+          newItem.innerHTML = `
+            <div class="input-group">
+              <input type="text" class="form-control" name="skillItem[]" placeholder="Ex: Gérer les bases de données" required>
+              <button type="button" class="btn btn-outline-danger remove-skill-item">
+                <i class="bi-trash"></i>
+              </button>
+            </div>
+          `;
+          skillsContainer.appendChild(newItem);
+          updateSkillRemoveButtons();
+        });
+      }
+
+      if (skillsContainer) {
+        skillsContainer.addEventListener('click', function(e) {
+          if (e.target.closest('.remove-skill-item')) {
+            e.target.closest('.skill-item').remove();
+            updateSkillRemoveButtons();
+          }
+        });
+      }
+
+      function updateSkillRemoveButtons() {
+        const items = skillsContainer.querySelectorAll('.skill-item');
+        const removeButtons = skillsContainer.querySelectorAll('.remove-skill-item');
+        
+        if (items.length === 1) {
+          removeButtons[0].style.display = 'none';
+        } else {
+          removeButtons.forEach(btn => btn.style.display = 'block');
+        }
+      }
+
+      updateSkillRemoveButtons();
+
+      // Gestion des formateurs
+      const instructorsContainer = document.getElementById('instructorsContainer');
+      const addInstructorButton = document.getElementById('addInstructorItem');
+
+      if (addInstructorButton) {
+        addInstructorButton.addEventListener('click', function() {
+          const newItem = document.createElement('div');
+          newItem.className = 'mb-3 instructor-item';
+          newItem.innerHTML = `
+            <div class="input-group">
+              <select class="form-select" name="instructor[]" required>
+                <option value="">Sélectionner un formateur</option>
+                <option value="marie-dubois">Marie Dubois - marie.dubois@formation.com</option>
+                <option value="alexandre-martin">Alexandre Martin - alexandre.martin@formation.com</option>
+                <option value="sophie-bernard">Sophie Bernard - sophie.bernard@formation.com</option>
+                <option value="pierre-durand">Pierre Durand - pierre.durand@formation.com</option>
+              </select>
+              <button type="button" class="btn btn-outline-danger remove-instructor-item">
+                <i class="bi-trash"></i>
+              </button>
+            </div>
+          `;
+          instructorsContainer.appendChild(newItem);
+          updateInstructorRemoveButtons();
+        });
+      }
+
+      if (instructorsContainer) {
+        instructorsContainer.addEventListener('click', function(e) {
+          if (e.target.closest('.remove-instructor-item')) {
+            e.target.closest('.instructor-item').remove();
+            updateInstructorRemoveButtons();
+          }
+        });
+      }
+
+      function updateInstructorRemoveButtons() {
+        const items = instructorsContainer.querySelectorAll('.instructor-item');
+        const removeButtons = instructorsContainer.querySelectorAll('.remove-instructor-item');
+        
+        if (items.length === 1) {
+          removeButtons[0].style.display = 'none';
+        } else {
+          removeButtons.forEach(btn => btn.style.display = 'block');
+        }
+      }
+
+      updateInstructorRemoveButtons();
+    });
+
+    // Fonction pour créer la formation
+    function createFormation() {
+      const submitButton = document.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      
+      submitButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Création...';
+      submitButton.disabled = true;
+      
+      setTimeout(() => {
+        submitButton.innerHTML = '<i class="bi-check-circle me-1"></i>Créée !';
+        submitButton.classList.remove('btn-primary');
+        submitButton.classList.add('btn-success');
+        
+        // Afficher la notification de succès
+        showSuccessNotification('Formation créée avec succès !');
+        
+        setTimeout(() => {
+          submitButton.innerHTML = originalText;
+          submitButton.classList.remove('btn-success');
+          submitButton.classList.add('btn-primary');
+          submitButton.disabled = false;
+          
+          // Rediriger vers la page des formations
+          window.location.href = 'formations.html';
+        }, 2000);
+      }, 1500);
+    }
+
+    // Fonction pour afficher les notifications de succès
+    function showSuccessNotification(message) {
+      // Créer une notification de succès
+      const notification = document.createElement('div');
+      notification.className = 'alert alert-success alert-dismissible fade show position-fixed';
+      notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+      notification.innerHTML = `
+        <i class="bi-check-circle me-2"></i>${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Supprimer automatiquement après 3 secondes
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.remove();
+        }
+      }, 3000);
+    }
+  </script>
 </body>
 
 <!-- Mirrored from htmlstream.com/preview/front-dashboard-v2.1.1/ecommerce-add-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Jul 2025 16:16:37 GMT -->

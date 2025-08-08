@@ -288,7 +288,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-success text-success">Active</span>
+                  <span class="badge bg-soft-success text-success">Actif</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -303,8 +303,11 @@
                       <a class="dropdown-item" href="formation-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item view-formation" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item desactivate-formation" href="#">
+                        <i class="bi-pause-circle dropdown-item-icon"></i> Désactiver
                       </a>
                     </div>
                   </div>
@@ -345,7 +348,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-success text-success">Active</span>
+                  <span class="badge bg-soft-success text-success">Actif</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -360,8 +363,11 @@
                       <a class="dropdown-item" href="formation-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item view-formation" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item desactivate-formation" href="#">
+                        <i class="bi-pause-circle dropdown-item-icon"></i> Désactiver
                       </a>
                     </div>
                   </div>
@@ -402,7 +408,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-warning text-warning">Inactive</span>
+                  <span class="badge bg-soft-danger text-danger">Désactivé</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -417,8 +423,11 @@
                       <a class="dropdown-item" href="formation-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item view-formation" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-play-circle dropdown-item-icon"></i> Activer
                       </a>
                     </div>
                   </div>
@@ -457,7 +466,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-secondary text-secondary">Brouillon</span>
+                  <span class="badge bg-soft-danger text-danger">Désactivé</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -472,8 +481,11 @@
                       <a class="dropdown-item" href="formation-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item view-formation" href="#">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="bi-play-circle dropdown-item-icon"></i> Activer
                       </a>
                     </div>
                   </div>
@@ -567,6 +579,137 @@
   <!-- JS Front -->
   <script src="assets/js/theme.min.js"></script>
 
+  <!-- Modal de confirmation pour désactiver -->
+  <div class="modal fade" id="confirmDesactivateModal" tabindex="-1" aria-labelledby="confirmDesactivateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDesactivateModalLabel">
+            <i class="bi-exclamation-triangle text-warning me-2"></i>
+            Confirmer la désactivation
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">Êtes-vous sûr de vouloir désactiver cette formation ?</p>
+          <p class="text-muted small mt-2">Cette action peut être annulée en réactivant la formation plus tard.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi-x-circle me-1"></i>Non
+          </button>
+          <button type="button" class="btn btn-danger" id="confirmDesactivateBtn">
+            <i class="bi-check-circle me-1"></i>Oui, désactiver
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal pour voir les détails de la formation -->
+  <div class="modal fade" id="viewFormationModal" tabindex="-1" aria-labelledby="viewFormationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewFormationModalLabel">
+            <i class="bi-eye text-primary me-2"></i>
+            Détails de la formation
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <!-- Image de la formation -->
+            <div class="col-md-4 text-center mb-3">
+              <img id="formationImage" src="" alt="Formation" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+            </div>
+            
+            <!-- Informations de la formation -->
+            <div class="col-md-8">
+              <h4 id="formationTitle" class="mb-3"></h4>
+              
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-clock text-muted me-2"></i>
+                    <span id="formationDuration" class="text-muted"></span>
+                  </div>
+                </div>
+                
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-bar-chart text-muted me-2"></i>
+                    <span id="formationLevel" class="text-muted"></span>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-person text-muted me-2"></i>
+                    <span id="formationInstructor" class="text-muted"></span>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-envelope text-muted me-2"></i>
+                    <span id="formationEmail" class="text-muted"></span>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-toggle-on text-muted me-2"></i>
+                    <span id="formationStatus" class="text-muted"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Description de la formation -->
+          <div class="mt-4">
+            <h6 class="mb-2">
+              <i class="bi-file-text text-primary me-2"></i>
+              Description
+            </h6>
+            <p id="formationDescription" class="text-muted"></p>
+          </div>
+          
+          <!-- Compétences acquises -->
+          <div class="mt-4">
+            <h6 class="mb-2">
+              <i class="bi-award text-primary me-2"></i>
+              Compétences acquises
+            </h6>
+            <div id="formationSkills" class="d-flex flex-wrap gap-2">
+              <!-- Les compétences seront ajoutées ici dynamiquement -->
+            </div>
+          </div>
+          
+          <!-- Médias associés -->
+          <div class="mt-4">
+            <h6 class="mb-2">
+              <i class="bi-images text-primary me-2"></i>
+              Médias associés
+            </h6>
+            <div id="formationMedia" class="d-flex flex-wrap gap-2">
+              <!-- Les médias seront ajoutés ici dynamiquement -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi-x-circle me-1"></i>Fermer
+          </button>
+          <a href="formation-edit.html" class="btn btn-primary">
+            <i class="bi-pencil me-1"></i>Modifier
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JS Plugins Init. -->
   <script>
     (function() {
@@ -604,6 +747,134 @@
         HSCore.components.HSFormSearch.init('.js-form-search');
       }
     })()
+  </script>
+
+  <!-- Script pour la popup de confirmation -->
+  <script>
+    // Gestion de la popup de confirmation pour désactiver
+    let formationToDesactivate = null;
+    
+    // Écouter les clics sur les liens "Désactiver"
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.desactivate-formation')) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        formationToDesactivate = e.target.closest('tr');
+        const formationName = formationToDesactivate.querySelector('.card-title').textContent;
+        
+        // Mettre à jour le message de la popup
+        const modalBody = document.querySelector('#confirmDesactivateModal .modal-body p:first-child');
+        if (modalBody) {
+          modalBody.textContent = `Êtes-vous sûr de vouloir désactiver la formation "${formationName}" ?`;
+        }
+        
+        // Afficher la popup
+        const modalElement = document.getElementById('confirmDesactivateModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+        
+        console.log('Popup ouverte pour:', formationName); // Debug
+      }
+    });
+
+    // Gestion du bouton "Oui, désactiver"
+    document.addEventListener('DOMContentLoaded', function() {
+      const confirmBtn = document.getElementById('confirmDesactivateBtn');
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', function() {
+          console.log('Bouton confirmé cliqué'); // Debug
+          
+          if (formationToDesactivate) {
+            // Changer le statut en "Désactivé"
+            const statusCell = formationToDesactivate.querySelector('td:nth-child(6)');
+            if (statusCell) {
+              statusCell.innerHTML = '<span class="badge bg-soft-danger text-danger">Désactivé</span>';
+            }
+            
+            // Changer l'action "Désactiver" en "Activer"
+            const dropdownMenu = formationToDesactivate.querySelector('.dropdown-menu');
+            const desactivateLink = dropdownMenu.querySelector('.desactivate-formation');
+            if (desactivateLink) {
+              desactivateLink.innerHTML = '<i class="bi-play-circle dropdown-item-icon"></i> Activer';
+              desactivateLink.classList.remove('desactivate-formation');
+              desactivateLink.classList.add('activate-formation');
+            }
+            
+            // Fermer la popup
+            const modalElement = document.getElementById('confirmDesactivateModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            if (modal) {
+              modal.hide();
+            }
+            
+            // Afficher une notification de succès
+            alert('Formation désactivée avec succès !');
+          }
+        });
+      }
+    });
+
+    // Gestion de la popup pour voir les détails de la formation
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.view-formation')) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const formationRow = e.target.closest('tr');
+        
+        // Récupérer les données de la formation
+        const formationImage = formationRow.querySelector('.avatar-img').src;
+        const formationTitle = formationRow.querySelector('.card-title').textContent;
+        const formationDuration = formationRow.querySelector('.fs-6').textContent;
+        const formationLevel = formationRow.querySelector('td:nth-child(3) .badge').textContent;
+        const formationInstructor = formationRow.querySelector('td:nth-child(4) .fw-bold').textContent;
+        const formationEmail = formationRow.querySelector('td:nth-child(4) .text-muted').textContent;
+        const formationStatus = formationRow.querySelector('td:nth-child(6) .badge').textContent;
+        const formationDescription = formationRow.querySelector('td:nth-child(5) p').textContent;
+        
+        // Remplir la popup avec les données
+        document.getElementById('formationImage').src = formationImage;
+        document.getElementById('formationTitle').textContent = formationTitle;
+        document.getElementById('formationDuration').textContent = formationDuration;
+        document.getElementById('formationLevel').textContent = formationLevel;
+        document.getElementById('formationInstructor').textContent = formationInstructor;
+        document.getElementById('formationEmail').textContent = formationEmail;
+        document.getElementById('formationStatus').textContent = formationStatus;
+        document.getElementById('formationDescription').textContent = formationDescription;
+        
+        // Ajouter des compétences fictives (à adapter selon vos données réelles)
+        const skillsContainer = document.getElementById('formationSkills');
+        skillsContainer.innerHTML = '';
+        
+        const skills = ['JavaScript', 'React', 'Node.js', 'MongoDB', 'API REST'];
+        skills.forEach(skill => {
+          const skillBadge = document.createElement('span');
+          skillBadge.className = 'badge bg-soft-primary text-primary';
+          skillBadge.textContent = skill;
+          skillsContainer.appendChild(skillBadge);
+        });
+        
+        // Ajouter des médias fictifs (à adapter selon vos données réelles)
+        const mediaContainer = document.getElementById('formationMedia');
+        mediaContainer.innerHTML = '';
+        
+        const mediaItems = ['Vidéo introductive', 'Support de cours', 'Exercices pratiques'];
+        mediaItems.forEach(media => {
+          const mediaBadge = document.createElement('span');
+          mediaBadge.className = 'badge bg-soft-info text-info';
+          mediaBadge.textContent = media;
+          mediaContainer.appendChild(mediaBadge);
+        });
+        
+        // Afficher la popup
+        const modalElement = document.getElementById('viewFormationModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+        
+        console.log('Popup détails ouverte pour:', formationTitle); // Debug
+      }
+    });
   </script>
 </body>
 </html> 

@@ -51,6 +51,111 @@
     .form-label[for="shortDescriptionLabel"] {
       padding-left: 15px;
     }
+
+    /* Popup CSS pour validation des dates */
+    .date-validation-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #dc3545;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      max-width: 400px;
+      width: 90%;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .date-validation-popup.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .date-validation-popup .popup-header {
+      background: #dc3545;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 6px 6px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .date-validation-popup .popup-header h5 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .date-validation-popup .popup-header .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+    }
+
+    .date-validation-popup .popup-header .close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .date-validation-popup .popup-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .date-validation-popup .popup-body .icon {
+      font-size: 48px;
+      color: #dc3545;
+      margin-bottom: 15px;
+    }
+
+    .date-validation-popup .popup-body .message {
+      color: #333;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .date-validation-popup .popup-footer {
+      padding: 0 20px 20px;
+      text-align: center;
+    }
+
+    .date-validation-popup .popup-footer .btn {
+      min-width: 100px;
+    }
+
+    /* Overlay pour assombrir l'arrière-plan */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 
   <style data-hs-appearance-onload-styles>
@@ -185,154 +290,6 @@
         </button>
 
         <!-- End Navbar Vertical Toggle -->
-
-        <!-- Search Form -->
-        <div class="dropdown ms-2">
-          <!-- Input Group -->
-          <div class="d-none d-lg-block">
-            <div class="input-group input-group-merge input-group-borderless input-group-hover-light navbar-input-group">
-              <div class="input-group-prepend input-group-text">
-                <i class="bi-search"></i>
-              </div>
-
-                              <input type="search" class="js-form-search form-control" placeholder="Rechercher des sessions" aria-label="Rechercher des sessions" data-hs-form-search-options='{
-                       "clearIcon": "#clearSearchResultsIcon",
-                       "dropMenuElement": "#searchDropdownMenu",
-                       "dropMenuOffset": 20,
-                       "toggleIconOnFocus": true,
-                       "activeClass": "focus"
-                     }'>
-              <a class="input-group-append input-group-text" href="javascript:;">
-                <i id="clearSearchResultsIcon" class="bi-x-lg" style="display: none;"></i>
-              </a>
-            </div>
-          </div>
-
-          <button class="js-form-search js-form-search-mobile-toggle btn btn-ghost-secondary btn-icon rounded-circle d-lg-none" type="button" data-hs-form-search-options='{
-                       "clearIcon": "#clearSearchResultsIcon",
-                       "dropMenuElement": "#searchDropdownMenu",
-                       "dropMenuOffset": 20,
-                       "toggleIconOnFocus": true,
-                       "activeClass": "focus"
-                     }'>
-            <i class="bi-search"></i>
-          </button>
-          <!-- End Input Group -->
-
-          <!-- Card Search Content -->
-          <div id="searchDropdownMenu" class="hs-form-search-menu-content dropdown-menu dropdown-menu-form-search navbar-dropdown-menu-borderless">
-            <div class="card">
-              <!-- Body -->
-              <div class="card-body-height">
-                <div class="d-lg-none">
-                  <div class="input-group input-group-merge navbar-input-group mb-5">
-                    <div class="input-group-prepend input-group-text">
-                      <i class="bi-search"></i>
-                    </div>
-
-                    <input type="search" class="form-control" placeholder="Search in front" aria-label="Search in front">
-                    <a class="input-group-append input-group-text" href="javascript:;">
-                      <i class="bi-x-lg"></i>
-                    </a>
-                  </div>
-                </div>
-
-                <span class="dropdown-header">Recent searches</span>
-
-                <div class="dropdown-item bg-transparent text-wrap">
-                  <a class="btn btn-soft-dark btn-xs rounded-pill" href="index.html">
-                    Gulp <i class="bi-search ms-1"></i>
-                  </a>
-                  <a class="btn btn-soft-dark btn-xs rounded-pill" href="index.html">
-                    Notification panel <i class="bi-search ms-1"></i>
-                  </a>
-                </div>
-
-                <div class="dropdown-divider"></div>
-
-                <span class="dropdown-header">Tutorials</span>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <span class="icon icon-soft-dark icon-xs icon-circle">
-                        <i class="bi-sliders"></i>
-                      </span>
-                    </div>
-
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>How to set up Gulp?</span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <span class="icon icon-soft-dark icon-xs icon-circle">
-                        <i class="bi-paint-bucket"></i>
-                      </span>
-                    </div>
-
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>How to change theme color?</span>
-                    </div>
-                  </div>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <span class="dropdown-header">Members</span>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>Amanda Harvey <i class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"></i></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>David Harrison</span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="dropdown-item" href="index.html">
-                  <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                      <div class="avatar avatar-xs avatar-soft-info avatar-circle">
-                        <span class="avatar-initials">A</span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1 text-truncate ms-2">
-                      <span>Anne Richard</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- End Body -->
-
-              <!-- Footer -->
-              <a class="card-footer text-center" href="index.html">
-                See all results <i class="bi-chevron-right small"></i>
-              </a>
-              <!-- End Footer -->
-            </div>
-          </div>
-          <!-- End Card Search Content -->
-
-        </div>
-
-        <!-- End Search Form -->
       </div>
 
       <div class="navbar-nav-wrap-content-end">
@@ -592,8 +549,9 @@
 
             <!-- Body -->
             <div class="card-body">
-              <!-- Form -->
-              <div class="mb-4">
+              <form id="sessionAddForm">
+                <!-- Form -->
+                <div class="mb-4">
                 <label for="formationSelectLabel" class="form-label">Sélectionner la formation <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Choisissez la formation pour laquelle vous créez une session."></i></label>
 
                 <select class="form-select" name="formationSelect" id="formationSelectLabel" required>
@@ -706,20 +664,22 @@
                   </div>
                 </div>
                 <!-- End Form -->
-  
-  
-  
-  
-  
-  
-  
-                <!-- Form Switch -->
-  
-                <!-- End Form Switch -->
-              </div>
-              <!-- Body -->
+                
+                <!-- Boutons -->
+                <div class="d-flex justify-content-end gap-3 mt-4">
+                  <button type="button" class="btn btn-white" onclick="window.location.href='sessions.html'">
+                    Annuler
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi-check-circle me-1"></i>
+                    Créer la session
+                  </button>
+                </div>
+              </form>
             </div>
-            <!-- End Card -->
+            <!-- Body -->
+          </div>
+          <!-- End Card -->
   
   
           </div>
@@ -729,29 +689,7 @@
       </div>
       <!-- End Row -->
 
-      <div class="position-fixed start-50 bottom-0 translate-middle-x w-100 zi-99 mb-3" style="max-width: 40rem;">
-        <!-- Card -->
-        <div class="card card-sm bg-dark border-dark mx-2">
-          <div class="card-body">
-            <div class="row justify-content-center justify-content-sm-between">
-              <div class="col">
-                <button type="button" class="btn btn-ghost-danger">Supprimer</button>
-              </div>
-              <!-- End Col -->
 
-              <div class="col-auto">
-                <div class="d-flex gap-3">
-                  <button type="button" class="btn btn-ghost-light">Annuler</button>
-                  <button type="button" class="btn btn-primary">Créer la session</button>
-                </div>
-              </div>
-              <!-- End Col -->
-            </div>
-            <!-- End Row -->
-          </div>
-        </div>
-        <!-- End Card -->
-      </div>
     </div>
     <!-- End Content -->
 
@@ -771,6 +709,29 @@
     <!-- End Footer -->
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- Popup de validation des dates -->
+  <div class="popup-overlay" id="dateValidationOverlay"></div>
+  <div class="date-validation-popup" id="dateValidationPopup">
+    <div class="popup-header">
+      <h5>Erreur de validation</h5>
+      <button type="button" class="close-btn" onclick="closeDateValidationPopup()">&times;</button>
+    </div>
+    <div class="popup-body">
+      <div class="icon">
+        <i class="bi-exclamation-triangle"></i>
+      </div>
+      <div class="message">
+        La date de fin doit être postérieure à la date de début.<br>
+        Veuillez corriger les dates saisies.
+      </div>
+    </div>
+    <div class="popup-footer">
+      <button type="button" class="btn btn-danger" onclick="closeDateValidationPopup()">
+        Compris
+      </button>
+    </div>
+  </div>
 
   <!-- ONLY DEV -->
 
@@ -953,6 +914,114 @@
   <!-- End Builder -->
 
   <div class="d-none js-build-layouts">
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor.min.js"></script>
+  <script src="assets/js/theme.min.js"></script>
+
+  <script>
+    (function() {
+      window.onload = function () {
+        const form = document.getElementById('sessionAddForm');
+        
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          // Validation basique
+          const formation = document.getElementById('formationSelectLabel').value;
+          const startDate = document.getElementById('startDateLabel').value;
+          const endDate = document.getElementById('endDateLabel').value;
+          const country = document.getElementById('countryLabel').value;
+          const city = document.getElementById('cityLabel').value;
+          const trainingType = document.getElementById('trainingTypeLabel').value;
+          const price = document.getElementById('priceLabel').value;
+          
+          if (!formation || !startDate || !endDate || !country || !city || !trainingType || !price) {
+            alert('Veuillez remplir tous les champs obligatoires.');
+            return;
+          }
+          
+          // Validation des dates
+          if (new Date(startDate) >= new Date(endDate)) {
+            showDateValidationPopup();
+            return;
+          }
+          
+          createSession();
+        });
+      }
+    })();
+
+    function createSession() {
+      const submitButton = document.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Création...';
+      submitButton.disabled = true;
+      setTimeout(() => {
+        submitButton.innerHTML = '<i class="bi-check-circle me-1"></i>Créée !';
+        submitButton.classList.remove('btn-primary');
+        submitButton.classList.add('btn-success');
+        showSuccessNotification('Session créée avec succès !');
+        setTimeout(() => {
+          submitButton.innerHTML = originalText;
+          submitButton.classList.remove('btn-success');
+          submitButton.classList.add('btn-primary');
+          submitButton.disabled = false;
+          window.location.href = 'sessions.html';
+        }, 2000);
+      }, 1500);
+    }
+
+    function showDateValidationPopup() {
+      const overlay = document.getElementById('dateValidationOverlay');
+      const popup = document.getElementById('dateValidationPopup');
+      
+      overlay.classList.add('show');
+      popup.classList.add('show');
+    }
+
+    function closeDateValidationPopup() {
+      const overlay = document.getElementById('dateValidationOverlay');
+      const popup = document.getElementById('dateValidationPopup');
+      
+      overlay.classList.remove('show');
+      popup.classList.remove('show');
+    }
+
+    function showSuccessNotification(message) {
+      // Créer la notification
+      const notification = document.createElement('div');
+      notification.className = 'position-fixed top-0 end-0 p-3';
+      notification.style.zIndex = '9999';
+      notification.innerHTML = `
+        <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              <i class="bi-check-circle me-2"></i>
+              ${message}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      `;
+      
+      // Ajouter au DOM
+      document.body.appendChild(notification);
+      
+      // Initialiser et afficher le toast
+      const toastElement = notification.querySelector('.toast');
+      const toast = new bootstrap.Toast(toastElement, {
+        autohide: true,
+        delay: 3000
+      });
+      toast.show();
+      
+      // Supprimer l'élément après l'animation
+      toastElement.addEventListener('hidden.bs.toast', () => {
+        document.body.removeChild(notification);
+      });
+    }
+  </script>
 </body>
 
 <!-- Mirrored from htmlstream.com/preview/front-dashboard-v2.1.1/ecommerce-add-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Jul 2025 16:16:37 GMT -->

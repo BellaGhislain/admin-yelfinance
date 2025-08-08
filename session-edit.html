@@ -237,10 +237,10 @@
                   <label for="sessionStatus" class="col-sm-3 col-form-label form-label">Statut <i class="bi-asterisk text-danger ms-1"></i></label>
                   <div class="col-sm-9">
                     <select class="form-select" name="sessionStatus" id="sessionStatus" required>
-                      <option value="active" selected>Active</option>
-                      <option value="inactive">Inactive</option>
-                      <option value="completed">Terminée</option>
-                      <option value="cancelled">Annulée</option>
+                      <option value="avenir" selected>Avenir</option>
+                      <option value="en-cours">En cours</option>
+                      <option value="annule">Annulé</option>
+                      <option value="achevee">Achevée</option>
                     </select>
                   </div>
                 </div>
@@ -282,7 +282,7 @@
               
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <span class="badge bg-soft-primary text-primary">Présentiel</span>
-                <span class="badge bg-soft-success text-success">Active</span>
+                <span class="badge bg-soft-info text-info">Avenir</span>
               </div>
               
               <div class="d-flex justify-content-between align-items-center mb-3">
@@ -314,28 +314,7 @@
             </div>
           </div>
 
-          <!-- Actions rapides -->
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-header-title">Actions rapides</h4>
-            </div>
-            <div class="card-body">
-              <div class="d-grid gap-2">
-                <button type="button" class="btn btn-outline-secondary" onclick="duplicateSession()">
-                  <i class="bi-files me-1"></i>
-                  Dupliquer la session
-                </button>
-                <button type="button" class="btn btn-outline-warning" onclick="archiveSession()">
-                  <i class="bi-archive me-1"></i>
-                  Archiver
-                </button>
-                <button type="button" class="btn btn-outline-danger" onclick="deleteSession()">
-                  <i class="bi-trash me-1"></i>
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -406,28 +385,59 @@
       }
     })();
 
-    function saveSession() {
-      const saveButton = document.querySelector('button[type="submit"]');
-      const originalText = saveButton.innerHTML;
-      
-      saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
-      saveButton.disabled = true;
-      
-      setTimeout(() => {
-        saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
-        saveButton.classList.remove('btn-primary');
-        saveButton.classList.add('btn-success');
-        
-        setTimeout(() => {
-          saveButton.innerHTML = originalText;
-          saveButton.classList.remove('btn-success');
-          saveButton.classList.add('btn-primary');
-          saveButton.disabled = false;
-          
-          window.location.href = 'sessions.html';
-        }, 2000);
-      }, 1500);
-    }
+         function saveSession() {
+       const saveButton = document.querySelector('button[type="submit"]');
+       const originalText = saveButton.innerHTML;
+       saveButton.innerHTML = '<i class="bi-arrow-clockwise me-1"></i>Enregistrement...';
+       saveButton.disabled = true;
+       setTimeout(() => {
+         saveButton.innerHTML = '<i class="bi-check-circle me-1"></i>Enregistré !';
+         saveButton.classList.remove('btn-primary');
+         saveButton.classList.add('btn-success');
+         showSuccessNotification('Session modifiée avec succès !');
+         setTimeout(() => {
+           saveButton.innerHTML = originalText;
+           saveButton.classList.remove('btn-success');
+           saveButton.classList.add('btn-primary');
+           saveButton.disabled = false;
+           window.location.href = 'sessions.html';
+         }, 2000);
+       }, 1500);
+     }
+
+     function showSuccessNotification(message) {
+       // Créer la notification
+       const notification = document.createElement('div');
+       notification.className = 'position-fixed top-0 end-0 p-3';
+       notification.style.zIndex = '9999';
+       notification.innerHTML = `
+         <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+           <div class="d-flex">
+             <div class="toast-body">
+               <i class="bi-check-circle me-2"></i>
+               ${message}
+             </div>
+             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+           </div>
+         </div>
+       `;
+       
+       // Ajouter au DOM
+       document.body.appendChild(notification);
+       
+       // Initialiser et afficher le toast
+       const toastElement = notification.querySelector('.toast');
+       const toast = new bootstrap.Toast(toastElement, {
+         autohide: true,
+         delay: 3000
+       });
+       toast.show();
+       
+       // Supprimer l'élément après l'animation
+       toastElement.addEventListener('hidden.bs.toast', () => {
+         document.body.removeChild(notification);
+       });
+     }
 
     function updatePreview() {
       const formation = document.getElementById('formationSelect');
@@ -479,39 +489,19 @@
       return types[type] || 'Type';
     }
 
-    function getStatusText(status) {
-      const statuses = {
-        'active': 'Active',
-        'inactive': 'Inactive',
-        'completed': 'Terminée',
-        'cancelled': 'Annulée'
-      };
-      return statuses[status] || 'Statut';
-    }
+         function getStatusText(status) {
+       const statuses = {
+         'avenir': 'Avenir',
+         'en-cours': 'En cours',
+         'annule': 'Annulé',
+         'achevee': 'Achevée'
+       };
+       return statuses[status] || 'Statut';
+     }
 
-    function previewSession() {
-      alert('Aperçu de la session - Cette fonctionnalité ouvrira la session dans un nouvel onglet');
-    }
-
-    function duplicateSession() {
-      if (confirm('Voulez-vous dupliquer cette session ?')) {
-        alert('Session dupliquée avec succès !');
-      }
-    }
-
-    function archiveSession() {
-      if (confirm('Voulez-vous archiver cette session ?')) {
-        alert('Session archivée avec succès !');
-        window.location.href = 'sessions.html';
-      }
-    }
-
-    function deleteSession() {
-      if (confirm('Êtes-vous sûr de vouloir supprimer cette session ? Cette action est irréversible.')) {
-        alert('Session supprimée avec succès !');
-        window.location.href = 'sessions.html';
-      }
-    }
+         function previewSession() {
+       alert('Aperçu de la session - Cette fonctionnalité ouvrira la session dans un nouvel onglet');
+     }
   </script>
 </body>
 </html> 

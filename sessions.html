@@ -184,7 +184,7 @@
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h1 class="page-header-title">Gestion des sessions</h1>
+        <h1 class="page-header-title">Gestion des sessions</h1>
           </div>
           <div class="col-auto">
             <a class="btn btn-primary" href="sessions-add.html">
@@ -201,15 +201,24 @@
         <!-- Header -->
         <div class="card-header card-header-content-md-between">
           <div class="mb-2 mb-md-0">
-            <form>
-              <!-- Search -->
-              <div class="input-group input-group-merge input-group-flush">
-                <div class="input-group-prepend input-group-text">
-                  <i class="bi-search"></i>
+            <form class="d-flex gap-3 align-items-end">
+              <!-- Date de début -->
+              <div class="d-flex flex-column">
+                <label class="form-label small fw-bold text-muted mb-1">Date de début</label>
+                <input type="date" class="form-control form-control-sm" id="startDate">
                 </div>
-                <input id="datatableSearch" type="search" class="form-control" placeholder="Rechercher des sessions" aria-label="Rechercher des sessions">
+              
+              <!-- Date de fin -->
+              <div class="d-flex flex-column">
+                <label class="form-label small fw-bold text-muted mb-1">Date de fin</label>
+                <input type="date" class="form-control form-control-sm" id="endDate">
               </div>
-              <!-- End Search -->
+              
+              <!-- Bouton Rechercher -->
+              <button type="button" class="btn btn-primary btn-sm d-flex align-items-center" id="searchSessionsBtn">
+                <i class="bi-search me-1"></i>
+                Rechercher
+              </button>
             </form>
           </div>
 
@@ -296,7 +305,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-success text-success">Active</span>
+                  <span class="badge bg-soft-info text-info">Avenir</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -311,7 +320,17 @@
                       <a class="dropdown-item" href="session-edit.html">
                         <i class="bi-pencil-fill dropdown-item-icon"></i> Modifier
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item btn-view-session" href="#" 
+                         data-bs-toggle="modal" 
+                         data-bs-target="#viewSessionModal"
+                         data-title="Formation en Développement Web"
+                         data-instructor="Marie Dubois"
+                         data-start="15/03/2024"
+                         data-end="15/06/2024"
+                         data-location="Paris, France"
+                         data-type="Présentiel"
+                         data-price="899 F CFA"
+                         data-status="Avenir">
                         <i class="bi-eye dropdown-item-icon"></i> Voir
                       </a>
                     </div>
@@ -359,7 +378,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-success text-success">Active</span>
+                  <span class="badge bg-soft-success text-success">En cours</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -422,7 +441,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-warning text-warning">Inactive</span>
+                  <span class="badge bg-soft-danger text-danger">Annulé</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -485,7 +504,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="badge bg-soft-secondary text-secondary">Terminée</span>
+                  <span class="badge bg-soft-secondary text-secondary">Achevée</span>
                 </td>
                 <td>
                   <!-- Unfold -->
@@ -588,6 +607,32 @@
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
 
+  <!-- Modal Voir Session -->
+  <div class="modal fade" id="viewSessionModal" tabindex="-1" aria-labelledby="viewSessionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewSessionModalLabel">Détails de la session</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Formation :</strong> <span id="sessionTitle"></span></li>
+            <li class="list-group-item"><strong>Formateur :</strong> <span id="sessionInstructor"></span></li>
+            <li class="list-group-item"><strong>Date de début :</strong> <span id="sessionStart"></span></li>
+            <li class="list-group-item"><strong>Date de fin :</strong> <span id="sessionEnd"></span></li>
+            <li class="list-group-item"><strong>Lieu :</strong> <span id="sessionLocation"></span></li>
+            <li class="list-group-item"><strong>Type :</strong> <span id="sessionType"></span></li>
+            <li class="list-group-item"><strong>Prix :</strong> <span id="sessionPrice"></span></li>
+            <li class="list-group-item"><strong>Statut :</strong> <span id="sessionStatus"></span></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- JS Implementing Plugins -->
   <script src="assets/js/vendor.min.js"></script>
 
@@ -626,11 +671,82 @@
           ]
         });
 
+        // Gestion de la recherche par dates
+        const searchBtn = document.getElementById('searchSessionsBtn');
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+
+        if (searchBtn) {
+          searchBtn.addEventListener('click', function() {
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
+            
+            // Validation des dates
+            if (startDate && endDate && startDate > endDate) {
+              alert('La date de début ne peut pas être postérieure à la date de fin.');
+              return;
+            }
+            
+            // Recherche dans le tableau
+            if (datatable) {
+              // Filtrer les lignes selon les dates
+              const rows = datatable.rows().nodes();
+              
+              for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const startDateCell = row.cells[2].textContent; // Colonne date de début
+                const endDateCell = row.cells[3].textContent;   // Colonne date de fin
+                
+                let showRow = true;
+                
+                if (startDate) {
+                  const rowStartDate = new Date(startDateCell.split('/').reverse().join('-'));
+                  const filterStartDate = new Date(startDate);
+                  if (rowStartDate < filterStartDate) {
+                    showRow = false;
+                  }
+                }
+                
+                if (endDate && showRow) {
+                  const rowEndDate = new Date(endDateCell.split('/').reverse().join('-'));
+                  const filterEndDate = new Date(endDate);
+                  if (rowEndDate > filterEndDate) {
+                    showRow = false;
+                  }
+                }
+                
+                if (showRow) {
+                  $(row).show();
+                } else {
+                  $(row).hide();
+                }
+              }
+            }
+          });
+        }
+
         // INITIALIZATION OF FORM SEARCH
         // =======================================================
         HSCore.components.HSFormSearch.init('.js-form-search');
       }
     })()
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const viewButtons = document.querySelectorAll('.btn-view-session');
+  viewButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.getElementById('sessionTitle').textContent = btn.getAttribute('data-title');
+      document.getElementById('sessionInstructor').textContent = btn.getAttribute('data-instructor');
+      document.getElementById('sessionStart').textContent = btn.getAttribute('data-start');
+      document.getElementById('sessionEnd').textContent = btn.getAttribute('data-end');
+      document.getElementById('sessionLocation').textContent = btn.getAttribute('data-location');
+      document.getElementById('sessionType').textContent = btn.getAttribute('data-type');
+      document.getElementById('sessionPrice').textContent = btn.getAttribute('data-price');
+      document.getElementById('sessionStatus').textContent = btn.getAttribute('data-status');
+    });
+  });
+});
   </script>
 </body>
 </html> 
